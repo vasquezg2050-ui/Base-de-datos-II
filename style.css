@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    height: 80px;
+    background: #1a1a2e;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+}
+
+.logo-texto {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-login {
+    background: #e94560;
+    padding: 8px 18px;
+    border-radius: 5px;
+}
+
+/* Secciones */
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+}
+
+/* Inicio / Hero */
+.hero {
+    background: #1a1a2e;
+    color: white;
+    text-align: center;
+}
+
+.profile-container {
+    margin-bottom: 25px;
+}
+
+.profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid #e94560;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 10px; }
+.hero span { color: #e94560; }
+
+.descripcion-pagina {
+    max-width: 750px;
+    margin: 30px auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 5px solid #e94560;
+}
+
+.scroll-indicator {
+    margin-top: 30px;
+    opacity: 0.7;
+}
+
+/* Semanas */
+.semanas { background: #ffffff; }
+.titulo-seccion { font-size: 2.5rem; margin-bottom: 40px; color: #1a1a2e; }
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    border-top: 6px solid #e94560;
+}
+
+.tag { background: #1a1a2e; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; }
+
+.botones-semana {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.botones-semana button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #16213e;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Contacto */
+.contacto { background: #f4f7f6; }
+.form-contacto { width: 100%; max-width: 500px; display: flex; flex-direction: column; margin-top: 20px; }
+.form-contacto input, .form-contacto textarea {
+    padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px;
+}
+.form-contacto button {
+    padding: 15px; background: #e94560; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
+}
+
+footer {
+    background: #1a1a2e; color: white; text-align: center; padding: 25px;
+}

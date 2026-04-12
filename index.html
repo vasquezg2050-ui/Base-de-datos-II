@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Anderson Gomez - UPLA</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo UPLA" class="logo-img">
+            <span class="logo-texto">UPLA - BD II</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#semanas">Semanas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#" class="btn-login">Login</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="profile-container">
+                <img src="img/perfil.jpeg" alt="Henry Anderson Gomez" class="profile-img">
+            </div>
+            <h1>Henry Anderson Gomez Vasquez</h1>
+            <p class="subtitulo">Estudiante de Ingeniería en la <span>UPLA</span></p>
+            <p class="especialidad">Especialización: <strong>Base de Datos II</strong></p>
+            
+            <div class="descripcion-pagina">
+                <p>Bienvenido a mi portafolio académico. En esta página veremos todos los <strong>avances en el transcurso del ciclo</strong> y también los trabajos dejados por el ingeniero a cargo, manteniendo un registro detallado de cada aprendizaje.</p>
+            </div>
+            <div class="scroll-indicator">Ver más abajo ↓</div>
+        </div>
+    </section>
+
+    <section id="semanas" class="semanas">
+        <h2 class="titulo-seccion">Mis Avances Académicos</h2>
+        <div class="container-cards">
+            
+            <div class="card">
+                <span class="tag">Semana 1</span>
+                <h3>Arquitectura de Base de Datos y su Aplicatividad Tecnológica</h3>
+                
+                <div class="material-clase">
+                    <p class="etiqueta-archivo">Material de la Sesión:</p>
+                    <a href="documentos/clase_semana1.exe" download class="enlace-principal">
+                        <button type="button" class="btn-material">💾 Descargar Archivo de Clase 1</button>
+                    </a>
+                </div>
+
+                <div class="tareas-container">
+                    <h4 class="subtitulo-tareas">Tareas Realizadas:</h4>
+                    <div class="botones-semana">
+                        <a href="documentos/resumen_semana1.pdf" target="_blank" class="enlace-tarea">
+                            <button type="button">Resumen (PDF)</button>
+                        </a>
+                        <a href="documentos/investigacion_semana1.pptx" target="_blank" class="enlace-tarea">
+                            <button type="button">Investigación (PPTX)</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+        <h2 class="titulo-seccion">Contacto</h2>
+        <div class="contacto-info">
+            <p><strong>Nombre:</strong> Henry Anderson Gomez Vasquez</p>
+            <p><strong>Universidad:</strong> Universidad Peruana Los Andes</p>
+        </div>
+        <form class="form-contacto">
+            <input type="text" placeholder="Escribe tu nombre">
+            <textarea placeholder="Tu mensaje"></textarea>
+            <button type="button">Enviar Mensaje</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 Anderson Gomez | Facultad de Ingeniería - UPLA</p>
+    </footer>
+
+</body>
+</html>
