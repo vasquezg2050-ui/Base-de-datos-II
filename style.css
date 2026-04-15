@@ -1,4 +1,4 @@
-* {
+* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,7 +9,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Navegación */
+/* NAVEGACIÓN */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -59,9 +59,11 @@ html {
     background: #e94560;
     padding: 8px 18px;
     border-radius: 5px;
+    text-decoration: none;
+    color: white;
 }
 
-/* Secciones */
+/* SECCIONES */
 section {
     min-height: 100vh;
     display: flex;
@@ -71,15 +73,11 @@ section {
     padding: 100px 20px;
 }
 
-/* Inicio / Hero */
+/* INICIO / HERO */
 .hero {
     background: #1a1a2e;
     color: white;
     text-align: center;
-}
-
-.profile-container {
-    margin-bottom: 25px;
 }
 
 .profile-img {
@@ -105,46 +103,111 @@ section {
     border-left: 5px solid #e94560;
 }
 
-.scroll-indicator {
-    margin-top: 30px;
-    opacity: 0.7;
+/* === NUEVA ORGANIZACIÓN POR UNIDADES === */
+.semanas { 
+    background: #f4f7f6; /* Un color claro para que las unidades resalten */
 }
 
-/* Semanas */
-.semanas { background: #ffffff; }
-.titulo-seccion { font-size: 2.5rem; margin-bottom: 40px; color: #1a1a2e; }
-
-.card {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    max-width: 600px;
-    width: 100%;
+.titulo-seccion { 
+    font-size: 2.5rem; 
+    margin-bottom: 40px; 
+    color: #1a1a2e; 
     text-align: center;
-    border-top: 6px solid #e94560;
 }
 
-.tag { background: #1a1a2e; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; }
-
-.botones-semana {
-    display: flex;
-    gap: 15px;
-    margin-top: 30px;
+.unidad-caja { 
+    margin-bottom: 50px; 
+    width: 100%; 
+    max-width: 1100px;
 }
 
-.botones-semana button {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    background: #16213e;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
+.unidad-titulo { 
+    background: #1a1a2e; 
+    color: white; 
+    padding: 10px 25px; 
+    border-radius: 8px; 
+    display: inline-block; 
+    margin-bottom: 25px; 
+    font-size: 1.2rem;
+    border-left: 5px solid #e94560;
+}
+
+/* Cuadrícula de 4 semanas */
+.semanas-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 20px;
+    width: 100%;
+}
+
+/* Tarjetas de Semanas (Mezclando tu estilo con la cuadrícula) */
+.card-semana {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    border-top: 5px solid #e94560; /* El color rojo que te gusta */
+    transition: 0.3s ease;
+}
+
+.card-semana:hover {
+    transform: translateY(-5px);
+}
+
+.nro-sem { 
+    display: inline-block; 
+    background: #e94560; 
+    color: white; 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    line-height: 40px; 
+    font-weight: bold; 
+    margin-bottom: 15px;
+}
+
+/* Botones dentro de las tarjetas */
+.botones-tareas { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    margin-top: 15px; 
+}
+
+.btn-t { 
+    background: #16213e; 
+    color: white; 
+    text-decoration: none; 
+    font-size: 0.85rem; 
+    padding: 10px; 
+    border-radius: 8px; 
     font-weight: 600;
+    transition: 0.3s;
 }
 
-/* Contacto */
+.btn-t:hover { 
+    background: #e94560; 
+}
+
+.btn-t.material {
+    background: #e94560;
+}
+
+.link-git { 
+    font-size: 0.75rem; 
+    color: #777; 
+    text-decoration: none; 
+    margin-top: 5px;
+}
+
+/* Estilo para las que aún no tienen contenido */
+.pendiente { 
+    opacity: 0.7; 
+    border-top: 5px solid #ccc; 
+}
+
+/* CONTACTO (Tu estilo original) */
 .contacto { background: #f4f7f6; }
 .form-contacto { width: 100%; max-width: 500px; display: flex; flex-direction: column; margin-top: 20px; }
 .form-contacto input, .form-contacto textarea {
@@ -152,6 +215,11 @@ section {
 }
 .form-contacto button {
     padding: 15px; background: #e94560; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    background: #1a1a2e; color: white; text-align: center; padding: 25px;
 }
 
 footer {
