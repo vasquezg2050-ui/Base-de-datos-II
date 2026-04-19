@@ -6,6 +6,57 @@
     <title>Portafolio Anderson Gomez - UPLA</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos para el Panel de Administración */
+        #adminPanel {
+            display: none; 
+            background: #202124; 
+            border-radius: 15px; 
+            padding: 25px; 
+            margin: 20px auto;
+            max-width: 90%;
+            border: 2px dashed #e94560; 
+            color: white;
+            text-align: center;
+        }
+        .admin-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .admin-controls select, .admin-controls input {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #3c4043;
+            background: #2d2e31;
+            color: white;
+        }
+        .btn-cargar {
+            background: #e94560;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        /* Estilo para los botones que aparecerán dinámicamente */
+        .btn-dinamico {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .bg-rojo { background: #e94560; color: white; }
+        .bg-oscuro { background: #1a1a2e; color: white; border: 1px solid #e94560; }
+    </style>
 </head>
 <body>
 
@@ -22,6 +73,21 @@
         </ul>
     </nav>
 
+    <section id="adminPanel">
+        <h3>🛠️ Panel de Control de Anderson</h3>
+        <p style="font-size: 0.9rem; color: #9aa0a6;">Selecciona una semana para publicar los archivos de clase.</p>
+        <div class="admin-controls">
+            <select id="selectSemana">
+                <option value="2">Semana 2</option>
+                <option value="3">Semana 3</option>
+                <option value="4">Semana 4</option>
+            </select>
+            <input type="file" id="fileInput">
+            <button class="btn-cargar" onclick="subirArchivoSimulado()">Publicar en Portafolio</button>
+        </div>
+        <p id="statusTxt" style="margin-top: 10px; color: #28a745; display: none; font-weight: bold;">¡Semana actualizada con éxito!</p>
+    </section>
+
     <section id="inicio" class="hero">
         <div class="hero-content">
             <div class="profile-container">
@@ -32,7 +98,7 @@
             <p class="especialidad">Especialización: <strong>Base de Datos II</strong></p>
             
             <div class="descripcion-pagina">
-                <p>Bienvenido a mi portafolio académico. En esta página veremos todos los <strong>avances en el transcurso del ciclo</strong> y también los trabajos dejados por el ingeniero a cargo, manteniendo un registro detallado de cada aprendizaje.</p>
+                <p>Bienvenido a mi portafolio académico. En esta página veremos todos los <strong>avances en el transcurso del ciclo</strong> y también los trabajos dejados por el ingeniero a cargo.</p>
             </div>
             <div class="scroll-indicator">Ver más abajo ↓</div>
         </div>
@@ -52,19 +118,25 @@
                         <a href="documentos/clase_semana1.exe" download class="btn-t material">💾 Archivo Clase</a>
                         <a href="documentos/resumen_semana1.pdf" target="_blank" class="btn-t">Resumen (PDF)</a>
                         <a href="documentos/investigacion_semana1.pptx" target="_blank" class="btn-t">Investigación</a>
-                        <a href="https://github.com/vasquezg2050-ui/Base-de-datos-II" target="_blank" class="link-git">📁 Rep. GitHub</a>
                     </div>
                 </div>
-                <div class="card-semana pendiente">
-                    <span class="nro-sem">2</span>
+
+                <div class="card-semana pendiente" id="card-2">
+                    <span class="nro-sem" id="nro-2">2</span>
                     <h4>Semana 2</h4>
-                    <p>Próximamente</p>
+                    <div id="cont-2">
+                        <p>Próximamente</p>
+                    </div>
                 </div>
-                <div class="card-semana pendiente">
-                    <span class="nro-sem">3</span>
+
+                <div class="card-semana pendiente" id="card-3">
+                    <span class="nro-sem" id="nro-3">3</span>
                     <h4>Semana 3</h4>
-                    <p>Próximamente</p>
+                    <div id="cont-3">
+                        <p>Próximamente</p>
+                    </div>
                 </div>
+
                 <div class="card-semana pendiente">
                     <span class="nro-sem">4</span>
                     <h4>Semana 4</h4>
@@ -72,37 +144,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="unidad-caja">
-            <h3 class="unidad-titulo">Unidad 2: Programación en Servidor</h3>
-            <div class="semanas-grid">
-                <div class="card-semana pendiente"><span class="nro-sem">5</span><h4>Semana 5</h4></div>
-                <div class="card-semana pendiente"><span class="nro-sem">6</span><h4>Semana 6</h4></div>
-                <div class="card-semana pendiente"><span class="nro-sem">7</span><h4>Semana 7</h4></div>
-                <div class="card-semana pendiente"><span class="nro-sem">8</span><h4>Semana 8</h4></div>
-            </div>
-        </div>
-
-        <div class="unidad-caja">
-            <h3 class="unidad-titulo">Unidad 3: Seguridad y Gestión</h3>
-            <div class="semanas-grid">
-                <div class="card-semana pendiente"><span class="nro-sem">9</span><h4>Semana 9</h4></div>
-                <div class="card-semana pendiente"><span class="nro-sem">10</span><h4>Semana 10</h4></div>
-                <div class="card-semana pendiente"><span class="nro-sem">11</span><h4>Semana 11</h4></div>
-                <div class="card-semana pendiente"><span class="nro-sem">12</span><h4>Semana 12</h4></div>
-            </div>
-        </div>
-
-        <div class="unidad-caja">
-            <h3 class="unidad-titulo">Unidad 4: Implementación Final</h3>
-            <div class="semanas-grid">
-                <div class="card-semana pendiente"><span class="nro-sem">13</span><h4>Semana 13</h4></div>
-                <div class="card-semana pendiente"><span class="nro-sem">14</span><h4>Semana 14</h4></div>
-                <div class="card-semana pendiente"><span class="nro-sem">15</span><h4>Semana 15</h4></div>
-                <div class="card-semana pendiente"><span class="nro-sem">16</span><h4>Semana 16</h4></div>
-            </div>
-        </div>
-    </section>
+        </section>
 
     <section id="contacto" class="contacto">
         <h2 class="titulo-seccion">Contacto</h2>
@@ -110,16 +152,49 @@
             <p><strong>Nombre:</strong> Henry Anderson Gomez Vasquez</p>
             <p><strong>Universidad:</strong> Universidad Peruana Los Andes</p>
         </div>
-        <form class="form-contacto">
-            <input type="text" placeholder="Escribe tu nombre">
-            <textarea placeholder="Tu mensaje"></textarea>
-            <button type="button">Enviar Mensaje</button>
-        </form>
     </section>
 
     <footer>
         <p>© 2026 Anderson Gomez | Facultad de Ingeniería - UPLA</p>
     </footer>
 
+    <script>
+        // Lógica para detectar si el usuario inició sesión
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('admin') === 'true') {
+            document.getElementById('adminPanel').style.display = 'block';
+        }
+
+        // Función para simular la subida y actualizar la vista
+        function subirArchivoSimulado() {
+            const sem = document.getElementById('selectSemana').value;
+            const archivo = document.getElementById('fileInput').files[0];
+
+            if (archivo) {
+                // 1. Cambiar el contenido de la tarjeta
+                const contenedor = document.getElementById(cont-${sem});
+                contenedor.innerHTML = `
+                    <p class="tema-sem" style="font-size:0.7rem; color:green; margin-bottom:10px;">Cargado: ${archivo.name}</p>
+                    <div class="botones-tareas">
+                        <a href="#" class="btn-dinamico bg-rojo">💾 Archivo Clase</a>
+                        <a href="#" class="btn-dinamico bg-oscuro">Resumen (PDF)</a>
+                        <a href="#" class="btn-dinamico bg-oscuro">Investigación</a>
+                    </div>
+                `;
+
+                // 2. Quitar el estilo de "pendiente" y activar color
+                const tarjeta = document.getElementById(card-${sem});
+                tarjeta.classList.remove('pendiente');
+                document.getElementById(nro-${sem}).style.background = "#e94560";
+
+                // 3. Mostrar mensaje de éxito
+                const status = document.getElementById('statusTxt');
+                status.style.display = 'block';
+                setTimeout(() => { status.style.display = 'none'; }, 3000);
+            } else {
+                alert("Por favor, selecciona un archivo (PDF o Excel).");
+            }
+        }
+    </script>
 </body>
 </html>
