@@ -9,8 +9,14 @@
 </head>
 <body>
 
+    <div id="panelAdmin" style="display: none; background: #e94560; color: white; text-align: center; padding: 15px; font-weight: bold; position: sticky; top: 0; z-index: 1000;">
+        🛠️ PANEL DE ADMINISTRADOR ACTIVADO
+        <button onclick="window.location.href='index.html'" style="margin-left:20px; cursor:pointer; background: white; border:none; padding:5px 10px; border-radius:5px; font-weight: bold;">Cerrar Sesión</button>
+    </div>
+
     <nav class="navbar">
         <div class="logo-container">
+            <img src="img/logo.png" alt="Logo UPLA" class="logo-img">
             <span class="logo-texto">UPLA - BD II</span>
         </div>
         <ul class="nav-links">
@@ -20,17 +26,17 @@
         </ul>
     </nav>
 
-    <div id="panelAdmin" style="display: none; background: #e94560; color: white; text-align: center; padding: 15px; font-weight: bold;">
-        MODO ADMINISTRADOR ACTIVADO - Gestionando archivos de Base de Datos II
-        <button onclick="window.location.href='index.html'" style="margin-left:20px; cursor:pointer; border:none; padding:5px 10px; border-radius:5px;">Cerrar Sesión</button>
-    </div>
-
     <section id="inicio" class="hero">
         <div class="hero-content">
+            <div class="profile-container">
+                <img src="img/perfil.jpeg" alt="Henry Anderson Gomez" class="profile-img">
+            </div>
             <h1>Henry Anderson Gomez Vasquez</h1>
             <p class="subtitulo">Estudiante de Ingeniería en la <span>UPLA</span></p>
+            <p class="especialidad">Especialización: <strong>Base de Datos II</strong></p>
+            
             <div class="descripcion-pagina">
-                <p>Bienvenido a mi portafolio académico. Aquí registro todos los <strong>avances del ciclo</strong> y trabajos de Base de Datos II.</p>
+                <p>Bienvenido a mi portafolio académico. En esta página veremos todos los <strong>avances en el transcurso del ciclo</strong>.</p>
             </div>
         </div>
     </section>
@@ -46,7 +52,7 @@
                     <h4>Semana 1</h4>
                     <p class="tema-sem">Arquitectura de Base de Datos</p>
                     <div class="botones-tareas">
-                        <a href="#" class="btn-t material">💾 Archivo Clase</a>
+                        <a href="documentos/clase_semana1.exe" download class="btn-t material">💾 Archivo Clase</a>
                         <a href="https://github.com/vasquezg2050-ui/Base-de-datos-II" target="_blank" class="link-git">📁 GitHub</a>
                     </div>
                 </div>
@@ -55,31 +61,35 @@
                     <span class="nro-sem">2</span>
                     <h4>Semana 2</h4>
                     <p id="txtSem2">Próximamente</p>
-                    <div id="adminControls2" style="display: none; margin-top: 10px;">
-                        <input type="file" id="file2" style="font-size: 10px; width: 100%;">
-                        <button class="btn-t" style="background:#1a1a2e; margin-top:5px; width:100%;">Subir Avance</button>
+                    <div id="adminControls2" style="display: none; margin-top: 15px; border-top: 1px solid #ddd; padding-top: 10px;">
+                        <p style="font-size: 11px; color: #e94560; font-weight: bold;">SUBIR ARCHIVO SEMANA 2:</p>
+                        <input type="file" id="file2" style="font-size: 10px; width: 100%; margin: 5px 0;">
+                        <button class="btn-t" style="background:#1a1a2e; color:white; width:100%; border:none; padding:8px;">Guardar Avance</button>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <footer>
+        <p>© 2026 Anderson Gomez | Facultad de Ingeniería - UPLA</p>
+    </footer>
 
     <script>
-        // Lógica para detectar el modo Admin
+        // Lógica para detectar el Administrador
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('admin') === 'true') {
-            // Mostrar panel superior
             document.getElementById('panelAdmin').style.display = 'block';
             document.getElementById('btnAcceso').style.display = 'none';
             
-            // Activar controles en Semana 2
+            // Transformar Semana 2
             const sem2 = document.getElementById('sem2');
             sem2.classList.remove('pendiente');
-            sem2.style.border = "2px dashed #e94560";
-            document.getElementById('txtSem2').innerText = "Listo para subir material";
+            sem2.style.background = "#fff";
+            sem2.style.border = "2px solid #e94560";
+            document.getElementById('txtSem2').innerText = "Panel de carga habilitado";
             document.getElementById('adminControls2').style.display = 'block';
         }
     </script>
-
 </body>
 </html>
