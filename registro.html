@@ -3,72 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Portafolio</title>
+    <title>Registro - Portafolio Anderson</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background: #1a1a2e; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px; }
-        .card { max-width: 400px; width: 100%; background: #ffffff; border-top: 6px solid #e94560; padding: 30px; border-radius: 15px; text-align: center; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 15px; outline: none; }
-        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        
+        .card { 
+            max-width: 400px; 
+            width: 100%; 
+            background: #ffffff; 
+            border-top: 6px solid #e94560; 
+            padding: 30px; 
+            border-radius: 15px; 
+            text-align: center; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h2 { color: #1a1a2e; margin-bottom: 10px; font-weight: 600; }
+        .sub { font-size: 0.85rem; color: #666; margin-bottom: 25px; }
+
+        input { 
+            width: 100%; 
+            padding: 12px; 
+            border-radius: 8px; 
+            border: 2px solid #eee; 
+            margin-bottom: 15px; 
+            outline: none; 
+            transition: 0.3s;
+        }
+        input:focus { border-color: #e94560; background: #fff5f6; }
+
+        .btn { 
+            width: 100%; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 1rem;
+            transition: 0.3s; 
+        }
         .btn-next { background: #1a1a2e; color: white; }
+        .btn-next:hover { background: #2a2a4e; }
         .btn-finish { background: #e94560; color: white; }
-        #msgExito { color: #28a745; font-size: 0.85rem; margin-bottom: 15px; font-weight: bold; display: none; }
+        .btn-finish:hover { background: #cf3a52; }
+
+        #msgExito { 
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .volver {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #777;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .volver:hover { color: #e94560; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h2 id="titulo" style="margin-bottom: 20px; color: #1a1a2e;">Paso 1: Correo</h2>
+        <h2 id="titulo">Paso 1: Correo</h2>
+        <p class="sub" id="subtitulo">Comencemos con tu cuenta académica.</p>
         
-        <p id="msgExito">¡Registro exitoso! Redirigiendo...</p>
+        <div id="msgExito">✅ ¡Registro exitoso! Guardando datos...</div>
 
         <form id="formRegistro">
             <div id="paso1">
-                <input type="email" id="regCorreo" placeholder="Introduce tu correo" required>
-                <button type="button" onclick="irAlPaso2()" class="btn btn-next">Continuar</button>
+                <input type="email" id="regCorreo" placeholder="Correo institucional" required>
+                <button type="button" onclick="irAlPaso2()" class="btn btn-next">Continuar →</button>
             </div>
 
             <div id="paso2" style="display: none;">
-                <input type="text" id="regNombre" placeholder="Nombres y Apellidos" required>
-                <input type="password" id="regPass" placeholder="Crea tu contraseña" required>
+                <input type="text" id="regNombre" placeholder="Tu nombre completo" required>
+                <input type="password" id="regPass" placeholder="Crea una contraseña segura" required>
                 <button type="submit" class="btn btn-finish">Finalizar Registro</button>
             </div>
         </form>
 
-        <br>
-        <a href="login.html" style="text-decoration: none; color: #777; font-size: 0.8rem;">← Volver al Login</a>
+        <a href="login.html" class="volver">← Ya tengo cuenta, ir al Login</a>
     </div>
 
     <script>
         function irAlPaso2() {
             const correo = document.getElementById('regCorreo').value;
+            // Validación básica de correo
             if(correo.includes('@')) {
                 document.getElementById('paso1').style.display = 'none';
                 document.getElementById('paso2').style.display = 'block';
                 document.getElementById('titulo').innerText = 'Paso 2: Datos';
+                document.getElementById('subtitulo').innerText = 'Configura tu perfil de administrador.';
+            } else {
+                alert("Por favor, ingresa un correo válido.");
             }
         }
 
         document.getElementById('formRegistro').addEventListener('submit', function(e) {
             e.preventDefault();
+            
             const nombre = document.getElementById('regNombre').value;
             const correo = document.getElementById('regCorreo').value;
 
+            // Creamos el objeto del nuevo usuario
             const nuevoUsuario = {
                 nombre: nombre,
                 email: correo,
-                inicial: nombre.charAt(0).toUpperCase()
+                inicial: nombre.charAt(0).toUpperCase() // Captura la primera letra para el avatar
             };
 
+            // Guardar en la base de datos local del navegador (localStorage)
             let cuentas = JSON.parse(localStorage.getItem('misCuentas')) || [];
             cuentas.push(nuevoUsuario);
             localStorage.setItem('misCuentas', JSON.stringify(cuentas));
 
-            // Mostrar mensaje en la página en lugar de alert
+            // Feedback visual de éxito
             document.getElementById('msgExito').style.display = 'block';
             document.getElementById('paso2').style.display = 'none';
+            document.getElementById('titulo').style.display = 'none';
+            document.getElementById('subtitulo').style.display = 'none';
 
+            // Redirigir al login después de 1.5 segundos
             setTimeout(() => {
                 window.location.href = 'login.html';
             }, 1500);
