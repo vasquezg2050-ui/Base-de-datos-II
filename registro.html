@@ -3,73 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Google Auth</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Registro Académico - UPLA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center;
+        /* Estilos del Fondo y Modal (Igual al diseño anterior) */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { background: #1a1a2e; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+
+        .container {
+            background: #202124; width: 100%; max-width: 450px;
+            padding: 30px; border-radius: 16px; border-top: 6px solid #e94560;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;
         }
-        .google-box {
-            background: white; width: 350px; border-radius: 8px; padding: 20px;
-            text-align: center; font-family: 'Roboto', sans-serif; color: #3c4043;
+
+        h2 { color: #e8eaed; margin-bottom: 10px; }
+        p { color: #9aa0a6; font-size: 0.9rem; margin-bottom: 25px; }
+
+        /* Formulario Estilizado */
+        .form-registro { display: flex; flex-direction: column; gap: 15px; }
+        .form-registro input, .form-registro select {
+            background: #2d2e31; border: 1px solid #3c4043; padding: 12px;
+            border-radius: 8px; color: #e8eaed; outline: none; font-size: 0.95rem;
         }
-        .user-option {
-            display: flex; align-items: center; padding: 10px; border-top: 1px solid #eee;
-            cursor: pointer; transition: 0.2s;
+        .form-registro input:focus { border-color: #8ab4f8; }
+
+        .btn-registrar {
+            background: #e94560; color: white; border: none; padding: 14px;
+            border-radius: 8px; font-weight: bold; cursor: pointer;
+            margin-top: 10px; transition: 0.3s;
         }
-        .user-option:hover { background: #f8f9fa; }
-        .avatar { width: 30px; height: 30px; background: #e94560; border-radius: 50%; margin-right: 12px; }
-        .btn-group { margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px; }
-        .btn-cancel { border: none; background: none; color: #1a73e8; cursor: pointer; font-weight: bold; }
-        .btn-cont { background: #1a73e8; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+        .btn-registrar:hover { background: #ff5e78; }
+
+        .volver { display: block; margin-top: 20px; color: #8ab4f8; text-decoration: none; font-size: 0.85rem; }
     </style>
 </head>
-<body style="background: #1a1a2e;">
+<body>
 
-    <div class="modal-overlay">
-        <div class="google-box">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="75" alt="Google">
-            <h3 style="margin: 15px 0 5px;">Elegir una cuenta</h3>
-            <p style="font-size: 0.9rem; margin-bottom: 20px;">para continuar en <b>Portafolio Anderson</b></p>
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="30" alt="G">
+        <h2>Crear Cuenta</h2>
+        <p>Usa tus datos de la UPLA para registrarte</p>
 
-            <div class="user-option" onclick="seleccionar('henry.gomez@gmail.com')">
-                <div class="avatar" style="background: #4285f4;"></div>
-                <div style="text-align: left;">
-                    <p style="font-size: 0.85rem; font-weight: bold; margin: 0;">Henry Anderson Gomez</p>
-                    <p style="font-size: 0.75rem; margin: 0; color: #70757a;">henry.gomez@gmail.com</p>
-                </div>
-            </div>
+        <form class="form-registro" id="formRegistro">
+            <input type="text" id="nombre" placeholder="Nombres y Apellidos" required>
+            <input type="email" id="correo" placeholder="Correo (@gmail.com o @upla.edu.pe)" required>
+            <input type="text" id="codigo" placeholder="Código de Estudiante (Ej: U2022...)" required>
+            
+            <select id="ciclo">
+                <option value="V">V Ciclo (Actual)</option>
+                <option value="VI">VI Ciclo</option>
+                <option value="VII">VII Ciclo</option>
+            </select>
 
-            <div class="user-option" onclick="seleccionar('u202210@upla.edu.pe')">
-                <div class="avatar" style="background: #34a853;"></div>
-                <div style="text-align: left;">
-                    <p style="font-size: 0.85rem; font-weight: bold; margin: 0;">Anderson Vasquez (UPLA)</p>
-                    <p style="font-size: 0.75rem; margin: 0; color: #70757a;">u202210@upla.edu.pe</p>
-                </div>
-            </div>
+            <input type="password" id="pass" placeholder="Contraseña" required>
+            
+            <button type="submit" class="btn-registrar">Registrar y Continuar</button>
+        </form>
 
-            <div class="btn-group">
-                <button class="btn-cancel" onclick="window.location.href='login.html'">Cancelar</button>
-                <button class="btn-cont" id="btnContinuar" disabled onclick="finalizar()">Continuar</button>
-            </div>
-        </div>
+        <a href="login.html" class="volver">¿Ya tienes cuenta? Inicia sesión</a>
     </div>
 
     <script>
-        let seleccionado = "";
-        function seleccionar(correo) {
-            seleccionado = correo;
-            document.getElementById('btnContinuar').disabled = false;
-            // Estilo visual de selección
-            alert("Has seleccionado: " + correo);
-        }
+        document.getElementById('formRegistro').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        function finalizar() {
-            alert("Registro exitoso con Google. ¡Bienvenido!");
-            window.location.href = "index.html?admin=true";
-        }
+            // 1. Capturamos los datos
+            const nuevoUsuario = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('correo').value,
+                codigo: document.getElementById('codigo').value,
+                ciclo: document.getElementById('ciclo').value,
+                inicial: document.getElementById('nombre').value.charAt(0).toUpperCase(),
+                color: '#4285f4' // Color azul de Google por defecto
+            };
+
+            // 2. Guardar en la "Base de Datos" del navegador (LocalStorage)
+            // Primero traemos lo que ya existe o creamos una lista vacía
+            let cuentas = JSON.parse(localStorage.getItem('misCuentas')) || [];
+            
+            // Agregamos el nuevo usuario a la lista
+            cuentas.push(nuevoUsuario);
+            
+            // Guardamos la lista actualizada
+            localStorage.setItem('misCuentas', JSON.stringify(cuentas));
+
+            // 3. Efecto de éxito y redirección
+            alert("¡Registro guardado con éxito, " + nuevoUsuario.nombre + "!");
+            window.location.href = "login.html"; // Regresamos al login para que vea su cuenta
+        });
     </script>
 </body>
 </html>
