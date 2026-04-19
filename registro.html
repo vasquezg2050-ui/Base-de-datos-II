@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Google Auth</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center;
+        }
+        .google-box {
+            background: white; width: 350px; border-radius: 8px; padding: 20px;
+            text-align: center; font-family: 'Roboto', sans-serif; color: #3c4043;
+        }
+        .user-option {
+            display: flex; align-items: center; padding: 10px; border-top: 1px solid #eee;
+            cursor: pointer; transition: 0.2s;
+        }
+        .user-option:hover { background: #f8f9fa; }
+        .avatar { width: 30px; height: 30px; background: #e94560; border-radius: 50%; margin-right: 12px; }
+        .btn-group { margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px; }
+        .btn-cancel { border: none; background: none; color: #1a73e8; cursor: pointer; font-weight: bold; }
+        .btn-cont { background: #1a73e8; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body style="background: #1a1a2e;">
+
+    <div class="modal-overlay">
+        <div class="google-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="75" alt="Google">
+            <h3 style="margin: 15px 0 5px;">Elegir una cuenta</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 20px;">para continuar en <b>Portafolio Anderson</b></p>
+
+            <div class="user-option" onclick="seleccionar('henry.gomez@gmail.com')">
+                <div class="avatar" style="background: #4285f4;"></div>
+                <div style="text-align: left;">
+                    <p style="font-size: 0.85rem; font-weight: bold; margin: 0;">Henry Anderson Gomez</p>
+                    <p style="font-size: 0.75rem; margin: 0; color: #70757a;">henry.gomez@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="user-option" onclick="seleccionar('u202210@upla.edu.pe')">
+                <div class="avatar" style="background: #34a853;"></div>
+                <div style="text-align: left;">
+                    <p style="font-size: 0.85rem; font-weight: bold; margin: 0;">Anderson Vasquez (UPLA)</p>
+                    <p style="font-size: 0.75rem; margin: 0; color: #70757a;">u202210@upla.edu.pe</p>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-cancel" onclick="window.location.href='login.html'">Cancelar</button>
+                <button class="btn-cont" id="btnContinuar" disabled onclick="finalizar()">Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let seleccionado = "";
+        function seleccionar(correo) {
+            seleccionado = correo;
+            document.getElementById('btnContinuar').disabled = false;
+            // Estilo visual de selección
+            alert("Has seleccionado: " + correo);
+        }
+
+        function finalizar() {
+            alert("Registro exitoso con Google. ¡Bienvenido!");
+            window.location.href = "index.html?admin=true";
+        }
+    </script>
+</body>
+</html>
