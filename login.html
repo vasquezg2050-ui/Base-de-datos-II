@@ -8,35 +8,71 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background: #1a1a2e; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px; }
-        .card { max-width: 400px; width: 100%; background: white; border-top: 6px solid #e94560; padding: 30px; border-radius: 15px; text-align: center; }
-        .user-box { display: flex; align-items: center; padding: 10px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; margin-bottom: 8px; transition: 0.2s; }
-        .avatar { width: 30px; height: 30px; background: #e94560; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 10px; font-weight: bold; font-size: 0.8rem; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 15px; outline: none; }
-        .btn-entrar { width: 100%; background: #e94560; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .card { max-width: 400px; width: 100%; background: white; border-top: 6px solid #e94560; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
+        .user-box { 
+            display: flex; 
+            align-items: center; 
+            padding: 12px; 
+            border: 2px solid #eee; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            margin-bottom: 10px; 
+            transition: 0.3s; 
+            text-align: left;
+        }
+        .user-box:hover { background: #f9f9f9; border-color: #ddd; }
+        
+        .avatar { 
+            width: 35px; height: 35px; 
+            background: #e94560; color: white; 
+            border-radius: 50%; 
+            display: flex; justify-content: center; align-items: center; 
+            margin-right: 12px; font-weight: bold; 
+        }
+        
+        input { 
+            width: 100%; padding: 12px; 
+            border-radius: 8px; border: 1px solid #ddd; 
+            margin-top: 10px; margin-bottom: 15px; 
+            outline: none; 
+        }
+        
+        .btn-entrar { 
+            width: 100%; background: #e94560; color: white; 
+            padding: 12px; border: none; border-radius: 8px; 
+            cursor: pointer; font-weight: bold; font-size: 1rem;
+            transition: 0.3s;
+        }
+        .btn-entrar:hover { background: #cf3a52; }
         .btn-entrar:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .registro-link { margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; font-size: 0.85rem; }
+        .registro-link a { color: #e94560; font-weight: bold; text-decoration: none; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h2 style="margin-bottom: 10px; color: #1a1a2e;">Iniciar Sesión</h2>
-        <p style="font-size: 0.8rem; color: #666; margin-bottom: 20px;">Selecciona tu cuenta</p>
+        <h2 style="margin-bottom: 5px; color: #1a1a2e;">Panel Anderson</h2>
+        <p style="font-size: 0.8rem; color: #666; margin-bottom: 20px;">Selecciona tu cuenta de administrador</p>
         
-        <div id="listaCuentas" style="margin-bottom: 15px; text-align: left;"></div>
+        <div id="listaCuentas"></div>
 
         <form id="loginForm">
-            <input type="password" placeholder="Contraseña" required>
-            <button type="submit" id="btnEntrar" disabled class="btn-entrar">Entrar</button>
+            <input type="password" id="passInput" placeholder="Contraseña de acceso" required>
+            <button type="submit" id="btnEntrar" disabled class="btn-entrar">Acceder al Portafolio</button>
         </form>
 
-        <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
-            <a href="registro.html" style="color: #e94560; font-weight: bold; text-decoration: none; font-size: 0.85rem;">Regístrate aquí</a>
+        <div class="registro-link">
+            ¿No aparece tu cuenta? <a href="registro.html">Regístrate aquí</a>
         </div>
         <br>
-        <a href="index.html" style="text-decoration: none; color: #777; font-size: 0.8rem;">← Volver al inicio</a>
+        <a href="indice.html" style="text-decoration: none; color: #777; font-size: 0.8rem;">← Volver al inicio público</a>
     </div>
 
     <script>
+        // Función para cargar los usuarios guardados en el navegador
         function cargarCuentas() {
             const contenedor = document.getElementById('listaCuentas');
             let cuentas = JSON.parse(localStorage.getItem('misCuentas')) || [];
@@ -48,27 +84,39 @@
                         <div onclick="seleccionar(${index})" id="user-${index}" class="user-box">
                             <div class="avatar">${c.inicial}</div>
                             <div>
-                                <p style="font-size: 0.8rem; font-weight: bold; margin: 0;">${c.nombre}</p>
-                                <p style="font-size: 0.7rem; color: #666; margin: 0;">${c.email}</p>
+                                <p style="font-size: 0.85rem; font-weight: 600; margin: 0; color: #1a1a2e;">${c.nombre}</p>
+                                <p style="font-size: 0.75rem; color: #777; margin: 0;">${c.email}</p>
                             </div>
                         </div>
                     `;
                 });
+            } else {
+                contenedor.innerHTML = '<p style="font-size: 0.8rem; color: #999; margin-bottom: 15px;">No hay cuentas. Regístrate para administrar.</p>';
             }
         }
 
+        // Resaltar la cuenta elegida y activar el botón
         function seleccionar(index) {
             document.getElementById('btnEntrar').disabled = false;
-            document.querySelectorAll('.user-box').forEach(el => el.style.borderColor = '#eee');
-            document.getElementById('user-' + index).style.borderColor = '#e94560';
+            // Limpiar bordes de otros cuadros
+            document.querySelectorAll('.user-box').forEach(el => {
+                el.style.borderColor = '#eee';
+                el.style.background = 'white';
+            });
+            // Marcar el seleccionado
+            const elegido = document.getElementById('user-' + index);
+            elegido.style.borderColor = '#e94560';
+            elegido.style.background = '#fff5f6';
         }
 
+        // Al dar click en Entrar
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Entrada directa sin alertas
-            window.location.href = 'index.html?admin=true';
+            // IMPORTANTE: Enviamos a indice.html con la "llave" ?admin=true
+            window.location.href = 'indice.html?admin=true';
         });
 
+        // Ejecutar al cargar la página
         window.onload = cargarCuentas;
     </script>
 </body>
