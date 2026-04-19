@@ -3,143 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Seleccionar Cuenta</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        /* Estilos generales */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        
-        body { 
-            background: #1a1a2e; /* Tu color oscuro original */
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* Capa de fondo para el efecto de la imagen que enviaste */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: flex-end;
-            z-index: 1000;
-        }
-
-        /* La caja oscura estilo Google/QuillBot */
-        .google-account-selector {
-            background: #202124; 
-            width: 100%; max-width: 450px; 
-            border-top-left-radius: 16px; border-top-right-radius: 16px; 
-            padding: 24px; 
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
-            text-align: center;
-        }
-
-        .g-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-        .g-logo { width: 18px; height: 18px; }
-        .g-text { color: #e8eaed; font-size: 0.95rem; font-weight: 500; }
-
-        /* Lista de usuarios registrados */
-        .users-list { 
-            display: flex; flex-direction: column; gap: 5px; 
-            max-height: 250px; overflow-y: auto; margin-bottom: 20px;
-        }
-
-        .user-option {
-            display: flex; align-items: center; padding: 12px; border-radius: 8px;
-            cursor: pointer; transition: background 0.2s;
-        }
-        .user-option:hover { background: rgba(255,255,255,0.05); }
-
-        .user-avatar {
-            width: 36px; height: 36px; border-radius: 50%; display: flex;
-            justify-content: center; align-items: center; color: white;
-            font-size: 1rem; font-weight: bold; margin-right: 15px;
-        }
-
-        .user-info { text-align: left; }
-        .u-name { color: #e8eaed; font-size: 0.9rem; font-weight: 500; }
-        .u-email { color: #9aa0a6; font-size: 0.8rem; }
-
-        /* Mensaje cuando no hay cuentas */
-        .no-accounts { color: #9aa0a6; font-size: 0.85rem; padding: 20px; }
-
-        /* Enlaces de abajo */
-        .footer-links { border-top: 1px solid #3c4043; padding-top: 20px; }
-        .link-reg { color: #e94560; font-weight: bold; text-decoration: none; font-size: 0.9rem; }
-        .btn-cancel { background: none; border: none; color: #8ab4f8; cursor: pointer; margin-top: 15px; font-size: 0.85rem; }
-
-        .btn-continuar {
-            width: 100%; background: #e94560; color: white; border: none; 
-            padding: 12px; border-radius: 8px; font-weight: bold; 
-            margin-top: 15px; cursor: pointer; transition: 0.3s;
-        }
-        .btn-continuar:disabled { opacity: 0.3; cursor: not-allowed; }
-    </style>
+    <title>Login - Portafolio Anderson</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background: #1a1a2e; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px;">
 
-    <div class="modal-overlay">
-        <div class="google-account-selector">
-            
-            <div class="g-header">
-                <p class="g-text">Iniciar sesión con google</p>
+    <div class="card-semana" style="max-width: 400px; width: 100%; background: white; border-top: 6px solid #e94560; padding: 30px; border-radius: 15px; text-align: center;">
+        <div class="nro-sem">A</div>
+        <h2 style="margin-bottom: 10px; color: #1a1a2e;">Iniciar Sesión</h2>
+        <p style="font-size: 0.8rem; color: #666; margin-bottom: 25px;">Selecciona tu cuenta registrada</p>
+        
+        <div id="listaCuentas" style="margin-bottom: 20px; text-align: left;">
             </div>
 
-            <div class="users-list" id="listaCuentas">
-                <p class="no-accounts">No hay cuentas registradas. <br> Regístrate para aparecer aquí.</p>
-            </div>
+        <form id="loginForm" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="password" id="password" placeholder="Contraseña" required style="padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+            <button type="submit" id="btnEntrar" disabled class="btn-t" style="background: #e94560; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                Entrar
+            </button>
+        </form>
 
-            <button class="btn-continuar" id="btnEntrar" disabled onclick="entrar()">Continuar</button>
-
-            <div class="footer-links">
-                <p style="color: #9aa0a6; font-size: 0.85rem; margin-bottom: 10px;">¿No tienes cuenta?</p>
-                <a href="registro.html" class="link-reg">Regístrate aquí</a>
-                <br>
-                <button class="btn-cancel" onclick="window.location.href='index.html'">← Volver al inicio</button>
-            </div>
+        <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid #eee;">
+            <p style="font-size: 0.85rem; color: #444;">
+                ¿No tienes cuenta? <br>
+                <a href="registro.html" style="color: #e94560; font-weight: bold; text-decoration: none;">Regístrate aquí</a>
+            </p>
         </div>
+        <br>
+        <a href="index.html" style="text-decoration: none; color: #777; font-size: 0.8rem;">← Volver al inicio</a>
     </div>
 
     <script>
-        let usuarioSeleccionado = "";
+        let seleccionado = false;
 
-        // 1. Cargamos las cuentas del LocalStorage
         function cargarCuentas() {
             const contenedor = document.getElementById('listaCuentas');
             let cuentas = JSON.parse(localStorage.getItem('misCuentas')) || [];
 
             if (cuentas.length > 0) {
-                contenedor.innerHTML = ''; // Limpiamos el mensaje de "No hay cuentas"
-                cuentas.forEach((cuenta) => {
+                contenedor.innerHTML = '';
+                cuentas.forEach((c, index) => {
                     contenedor.innerHTML += `
-                        <div class="user-option" onclick="seleccionar('${cuenta.nombre}')">
-                            <div class="user-avatar" style="background: ${cuenta.color};">${cuenta.inicial}</div>
-                            <div class="user-info">
-                                <p class="u-name">${cuenta.nombre}</p>
-                                <p class="u-email">${cuenta.email}</p>
+                        <div onclick="seleccionarCuenta(${index})" id="user-${index}" style="display: flex; align-items: center; padding: 10px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; margin-bottom: 5px;">
+                            <div style="width: 30px; height: 30px; background: #e94560; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 10px; font-weight: bold;">${c.inicial}</div>
+                            <div>
+                                <p style="font-size: 0.8rem; font-weight: bold; margin: 0; color: #333;">${c.nombre}</p>
+                                <p style="font-size: 0.7rem; margin: 0; color: #666;">${c.email}</p>
                             </div>
                         </div>
                     `;
                 });
+            } else {
+                contenedor.innerHTML = '<p style="font-size: 0.8rem; color: #999; text-align: center;">No hay cuentas. Regístrate primero.</p>';
             }
         }
 
-        // 2. Función al hacer clic en una cuenta
-        function seleccionar(nombre) {
-            usuarioSeleccionado = nombre;
+        function seleccionarCuenta(index) {
+            seleccionado = true;
             document.getElementById('btnEntrar').disabled = false;
-            // Estilo visual simple para saber qué seleccionaste
-            console.log("Cuenta seleccionada: " + nombre);
+            // Resaltar la seleccionada
+            document.querySelectorAll('[id^="user-"]').forEach(el => el.style.borderColor = '#eee');
+            document.getElementById('user-' + index).style.borderColor = '#e94560';
         }
 
-        // 3. Botón Continuar
-        function entrar() {
-            alert("¡Bienvenido de nuevo, " + usuarioSeleccionado + "!");
-            window.location.href = "index.html?admin=true";
-        }
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Bienvenido! Redirigiendo...');
+            window.location.href = 'index.html?admin=true';
+        });
 
-        // Al abrir la página, cargamos los datos
         window.onload = cargarCuentas;
     </script>
 </body>
