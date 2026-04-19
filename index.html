@@ -42,7 +42,6 @@
             font-weight: bold;
             cursor: pointer;
         }
-        /* Estilo para los botones que aparecerán dinámicamente */
         .btn-dinamico {
             display: block;
             width: 100%;
@@ -56,6 +55,23 @@
         }
         .bg-rojo { background: #e94560; color: white; }
         .bg-oscuro { background: #1a1a2e; color: white; border: 1px solid #e94560; }
+
+        /* Mejora de Contacto */
+        .contacto-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .info-box {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #e94560;
+        }
+        .info-box h4 { color: #e94560; margin-bottom: 5px; }
     </style>
 </head>
 <body>
@@ -75,12 +91,18 @@
 
     <section id="adminPanel">
         <h3>🛠️ Panel de Control de Anderson</h3>
-        <p style="font-size: 0.9rem; color: #9aa0a6;">Selecciona una semana para publicar los archivos de clase.</p>
+        <p style="font-size: 0.9rem; color: #9aa0a6;">Selecciona una semana de cualquier unidad para publicar archivos.</p>
         <div class="admin-controls">
             <select id="selectSemana">
-                <option value="2">Semana 2</option>
-                <option value="3">Semana 3</option>
-                <option value="4">Semana 4</option>
+                <optgroup label="Unidad 1">
+                    <option value="2">Semana 2</option>
+                    <option value="3">Semana 3</option>
+                    <option value="4">Semana 4</option>
+                </optgroup>
+                <optgroup label="Unidad 2">
+                    <option value="5">Semana 5</option>
+                    <option value="6">Semana 6</option>
+                </optgroup>
             </select>
             <input type="file" id="fileInput">
             <button class="btn-cargar" onclick="subirArchivoSimulado()">Publicar en Portafolio</button>
@@ -96,11 +118,9 @@
             <h1>Henry Anderson Gomez Vasquez</h1>
             <p class="subtitulo">Estudiante de Ingeniería en la <span>UPLA</span></p>
             <p class="especialidad">Especialización: <strong>Base de Datos II</strong></p>
-            
             <div class="descripcion-pagina">
-                <p>Bienvenido a mi portafolio académico. En esta página veremos todos los <strong>avances en el transcurso del ciclo</strong> y también los trabajos dejados por el ingeniero a cargo.</p>
+                <p>Avances detallados del ciclo académico y registros de aprendizaje en <strong>Base de Datos II</strong>.</p>
             </div>
-            <div class="scroll-indicator">Ver más abajo ↓</div>
         </div>
     </section>
 
@@ -116,41 +136,77 @@
                     <p class="tema-sem">Arquitectura de Base de Datos</p>
                     <div class="botones-tareas">
                         <a href="documentos/clase_semana1.exe" download class="btn-t material">💾 Archivo Clase</a>
-                        <a href="documentos/resumen_semana1.pdf" target="_blank" class="btn-t">Resumen (PDF)</a>
-                        <a href="documentos/investigacion_semana1.pptx" target="_blank" class="btn-t">Investigación</a>
+                        <a href="#" class="btn-t">Resumen (PDF)</a>
                     </div>
                 </div>
-
                 <div class="card-semana pendiente" id="card-2">
                     <span class="nro-sem" id="nro-2">2</span>
                     <h4>Semana 2</h4>
-                    <div id="cont-2">
-                        <p>Próximamente</p>
-                    </div>
+                    <div id="cont-2"><p>Próximamente</p></div>
                 </div>
-
                 <div class="card-semana pendiente" id="card-3">
                     <span class="nro-sem" id="nro-3">3</span>
                     <h4>Semana 3</h4>
-                    <div id="cont-3">
-                        <p>Próximamente</p>
-                    </div>
+                    <div id="cont-3"><p>Próximamente</p></div>
                 </div>
-
-                <div class="card-semana pendiente">
-                    <span class="nro-sem">4</span>
+                <div class="card-semana pendiente" id="card-4">
+                    <span class="nro-sem" id="nro-4">4</span>
                     <h4>Semana 4</h4>
-                    <p>Próximamente</p>
+                    <div id="cont-4"><p>Próximamente</p></div>
                 </div>
             </div>
         </div>
-        </section>
+
+        <div class="unidad-caja">
+            <h3 class="unidad-titulo">Unidad 2: Programación en Servidor</h3>
+            <div class="semanas-grid">
+                <div class="card-semana pendiente" id="card-5"><span class="nro-sem" id="nro-5">5</span><h4>Semana 5</h4><div id="cont-5"><p>Próximamente</p></div></div>
+                <div class="card-semana pendiente" id="card-6"><span class="nro-sem" id="nro-6">6</span><h4>Semana 6</h4><div id="cont-6"><p>Próximamente</p></div></div>
+                <div class="card-semana pendiente" id="card-7"><span class="nro-sem" id="nro-7">7</span><h4>Semana 7</h4><div id="cont-7"><p>Próximamente</p></div></div>
+                <div class="card-semana pendiente" id="card-8"><span class="nro-sem" id="nro-8">8</span><h4>Semana 8</h4><div id="cont-8"><p>Próximamente</p></div></div>
+            </div>
+        </div>
+
+        <div class="unidad-caja">
+            <h3 class="unidad-titulo">Unidad 3: Seguridad y Gestión</h3>
+            <div class="semanas-grid">
+                <div class="card-semana pendiente" id="card-9"><span class="nro-sem" id="nro-9">9</span><h4>Semana 9</h4><div id="cont-9"><p>Próximamente</p></div></div>
+                <div class="card-semana pendiente" id="card-10"><span class="nro-sem" id="nro-10">10</span><h4>Semana 10</h4><div id="cont-10"><p>Próximamente</p></div></div>
+                <div class="card-semana pendiente" id="card-11"><span class="nro-sem" id="nro-11">11</span><h4>Semana 11</h4><div id="cont-11"><p>Próximamente</p></div></div>
+                <div class="card-semana pendiente" id="card-12"><span class="nro-sem" id="nro-12">12</span><h4>Semana 12</h4><div id="cont-12"><p>Próximamente</p></div></div>
+            </div>
+        </div>
+
+        <div class="unidad-caja">
+            <h3 class="unidad-titulo">Unidad 4: Implementación Final</h3>
+            <div class="semanas-grid">
+                <div class="card-semana pendiente" id="card-13"><span class="nro-sem" id="nro-13">13</span><h4>Semana 13</h4><div id="cont-13"><p>Próximamente</p></div></div>
+                <div class="card-semana pendiente" id="card-14"><span class="nro-sem" id="nro-14">14</span><h4>Semana 14</h4><div id="cont-14"><p>Próximamente</p></div></div>
+                <div class="card-semana pendiente" id="card-15"><span class="nro-sem" id="nro-15">15</span><h4>Semana 15</h4><div id="cont-15"><p>Próximamente</p></div></div>
+                <div class="card-semana pendiente" id="card-16"><span class="nro-sem" id="nro-16">16</span><h4>Semana 16</h4><div id="cont-16"><p>Próximamente</p></div></div>
+            </div>
+        </div>
+    </section>
 
     <section id="contacto" class="contacto">
-        <h2 class="titulo-seccion">Contacto</h2>
-        <div class="contacto-info">
-            <p><strong>Nombre:</strong> Henry Anderson Gomez Vasquez</p>
-            <p><strong>Universidad:</strong> Universidad Peruana Los Andes</p>
+        <h2 class="titulo-seccion">Información de Contacto</h2>
+        <div class="contacto-container">
+            <div class="info-box">
+                <h4>📍 Ubicación</h4>
+                <p>Chanchamayo, Junín - Perú</p>
+            </div>
+            <div class="info-box">
+                <h4>🎓 Institución</h4>
+                <p>Universidad Peruana Los Andes (UPLA)</p>
+            </div>
+            <div class="info-box">
+                <h4>👨‍💻 Desarrollador</h4>
+                <p>Henry Anderson Gomez Vasquez</p>
+            </div>
+            <div class="info-box">
+                <h4>📂 Repositorio</h4>
+                <p>GitHub: vasquezg2050-ui</p>
+            </div>
         </div>
     </section>
 
@@ -159,40 +215,30 @@
     </footer>
 
     <script>
-        // Lógica para detectar si el usuario inició sesión
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('admin') === 'true') {
             document.getElementById('adminPanel').style.display = 'block';
         }
 
-        // Función para simular la subida y actualizar la vista
         function subirArchivoSimulado() {
             const sem = document.getElementById('selectSemana').value;
             const archivo = document.getElementById('fileInput').files[0];
-
             if (archivo) {
-                // 1. Cambiar el contenido de la tarjeta
                 const contenedor = document.getElementById(cont-${sem});
                 contenedor.innerHTML = `
-                    <p class="tema-sem" style="font-size:0.7rem; color:green; margin-bottom:10px;">Cargado: ${archivo.name}</p>
+                    <p class="tema-sem" style="font-size:0.7rem; color:#28a745; margin-bottom:10px;">📄 ${archivo.name}</p>
                     <div class="botones-tareas">
-                        <a href="#" class="btn-dinamico bg-rojo">💾 Archivo Clase</a>
-                        <a href="#" class="btn-dinamico bg-oscuro">Resumen (PDF)</a>
-                        <a href="#" class="btn-dinamico bg-oscuro">Investigación</a>
+                        <a href="#" class="btn-dinamico bg-rojo">💾 Ver Archivo</a>
+                        <a href="#" class="btn-dinamico bg-oscuro">GitHub</a>
                     </div>
                 `;
-
-                // 2. Quitar el estilo de "pendiente" y activar color
                 const tarjeta = document.getElementById(card-${sem});
                 tarjeta.classList.remove('pendiente');
                 document.getElementById(nro-${sem}).style.background = "#e94560";
-
-                // 3. Mostrar mensaje de éxito
-                const status = document.getElementById('statusTxt');
-                status.style.display = 'block';
-                setTimeout(() => { status.style.display = 'none'; }, 3000);
+                document.getElementById('statusTxt').style.display = 'block';
+                setTimeout(() => { document.getElementById('statusTxt').style.display = 'none'; }, 3000);
             } else {
-                alert("Por favor, selecciona un archivo (PDF o Excel).");
+                alert("Selecciona un archivo primero.");
             }
         }
     </script>
