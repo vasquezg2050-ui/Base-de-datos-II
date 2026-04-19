@@ -4,39 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Portafolio Anderson</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: #1a1a2e; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px; }
+        .card { max-width: 400px; width: 100%; background: white; border-top: 6px solid #e94560; padding: 30px; border-radius: 15px; text-align: center; }
+        .user-box { display: flex; align-items: center; padding: 10px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; margin-bottom: 8px; transition: 0.2s; }
+        .avatar { width: 30px; height: 30px; background: #e94560; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 10px; font-weight: bold; font-size: 0.8rem; }
+        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 15px; outline: none; }
+        .btn-entrar { width: 100%; background: #e94560; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .btn-entrar:disabled { opacity: 0.5; cursor: not-allowed; }
+    </style>
 </head>
-<body style="background: #1a1a2e; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px;">
+<body>
 
-    <div class="card-semana" style="max-width: 400px; width: 100%; background: white; border-top: 6px solid #e94560; padding: 30px; border-radius: 15px; text-align: center;">
-        <div class="nro-sem">A</div>
+    <div class="card">
         <h2 style="margin-bottom: 10px; color: #1a1a2e;">Iniciar Sesión</h2>
-        <p style="font-size: 0.8rem; color: #666; margin-bottom: 25px;">Selecciona tu cuenta registrada</p>
+        <p style="font-size: 0.8rem; color: #666; margin-bottom: 20px;">Selecciona tu cuenta</p>
         
-        <div id="listaCuentas" style="margin-bottom: 20px; text-align: left;">
-            </div>
+        <div id="listaCuentas" style="margin-bottom: 15px; text-align: left;"></div>
 
-        <form id="loginForm" style="display: flex; flex-direction: column; gap: 15px;">
-            <input type="password" id="password" placeholder="Contraseña" required style="padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
-            <button type="submit" id="btnEntrar" disabled class="btn-t" style="background: #e94560; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
-                Entrar
-            </button>
+        <form id="loginForm">
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit" id="btnEntrar" disabled class="btn-entrar">Entrar</button>
         </form>
 
-        <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid #eee;">
-            <p style="font-size: 0.85rem; color: #444;">
-                ¿No tienes cuenta? <br>
-                <a href="registro.html" style="color: #e94560; font-weight: bold; text-decoration: none;">Regístrate aquí</a>
-            </p>
+        <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+            <a href="registro.html" style="color: #e94560; font-weight: bold; text-decoration: none; font-size: 0.85rem;">Regístrate aquí</a>
         </div>
         <br>
         <a href="index.html" style="text-decoration: none; color: #777; font-size: 0.8rem;">← Volver al inicio</a>
     </div>
 
     <script>
-        let seleccionado = false;
-
         function cargarCuentas() {
             const contenedor = document.getElementById('listaCuentas');
             let cuentas = JSON.parse(localStorage.getItem('misCuentas')) || [];
@@ -45,31 +45,27 @@
                 contenedor.innerHTML = '';
                 cuentas.forEach((c, index) => {
                     contenedor.innerHTML += `
-                        <div onclick="seleccionarCuenta(${index})" id="user-${index}" style="display: flex; align-items: center; padding: 10px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; margin-bottom: 5px;">
-                            <div style="width: 30px; height: 30px; background: #e94560; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 10px; font-weight: bold;">${c.inicial}</div>
+                        <div onclick="seleccionar(${index})" id="user-${index}" class="user-box">
+                            <div class="avatar">${c.inicial}</div>
                             <div>
-                                <p style="font-size: 0.8rem; font-weight: bold; margin: 0; color: #333;">${c.nombre}</p>
-                                <p style="font-size: 0.7rem; margin: 0; color: #666;">${c.email}</p>
+                                <p style="font-size: 0.8rem; font-weight: bold; margin: 0;">${c.nombre}</p>
+                                <p style="font-size: 0.7rem; color: #666; margin: 0;">${c.email}</p>
                             </div>
                         </div>
                     `;
                 });
-            } else {
-                contenedor.innerHTML = '<p style="font-size: 0.8rem; color: #999; text-align: center;">No hay cuentas. Regístrate primero.</p>';
             }
         }
 
-        function seleccionarCuenta(index) {
-            seleccionado = true;
+        function seleccionar(index) {
             document.getElementById('btnEntrar').disabled = false;
-            // Resaltar la seleccionada
-            document.querySelectorAll('[id^="user-"]').forEach(el => el.style.borderColor = '#eee');
+            document.querySelectorAll('.user-box').forEach(el => el.style.borderColor = '#eee');
             document.getElementById('user-' + index).style.borderColor = '#e94560';
         }
 
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('¡Bienvenido! Redirigiendo...');
+            // Entrada directa sin alertas
             window.location.href = 'index.html?admin=true';
         });
 
