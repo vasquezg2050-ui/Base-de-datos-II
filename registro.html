@@ -3,93 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Académico - UPLA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Registro - Portafolio BD II</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Estilos del Fondo y Modal (Igual al diseño anterior) */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background: #1a1a2e; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-
         .container {
-            background: #202124; width: 100%; max-width: 450px;
+            background: #202124; width: 100%; max-width: 400px;
             padding: 30px; border-radius: 16px; border-top: 6px solid #e94560;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;
+            text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-
-        h2 { color: #e8eaed; margin-bottom: 10px; }
-        p { color: #9aa0a6; font-size: 0.9rem; margin-bottom: 25px; }
-
-        /* Formulario Estilizado */
+        h2 { color: #ffffff; margin-bottom: 20px; }
         .form-registro { display: flex; flex-direction: column; gap: 15px; }
-        .form-registro input, .form-registro select {
+        .form-registro input {
             background: #2d2e31; border: 1px solid #3c4043; padding: 12px;
-            border-radius: 8px; color: #e8eaed; outline: none; font-size: 0.95rem;
+            border-radius: 8px; color: #ffffff; outline: none;
         }
-        .form-registro input:focus { border-color: #8ab4f8; }
-
         .btn-registrar {
             background: #e94560; color: white; border: none; padding: 14px;
-            border-radius: 8px; font-weight: bold; cursor: pointer;
-            margin-top: 10px; transition: 0.3s;
+            border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;
         }
         .btn-registrar:hover { background: #ff5e78; }
-
         .volver { display: block; margin-top: 20px; color: #8ab4f8; text-decoration: none; font-size: 0.85rem; }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <img src="google.logo.webp" width="30" alt="G">
-        <h2>Crear Cuenta</h2>
-        <p>Usa tus datos de la UPLA para registrarte</p>
-
+        <h2>Crear Perfil</h2>
         <form class="form-registro" id="formRegistro">
-            <input type="text" id="nombre" placeholder="Nombres y Apellidos" required>
-            <input type="email" id="correo" placeholder="Correo (@gmail.com o @upla.edu.pe)" required>
-            <input type="text" id="codigo" placeholder="Código de Estudiante (Ej: U2022...)" required>
-            
-            <select id="ciclo">
-                <option value="V">V Ciclo (Actual)</option>
-                <option value="VI">VI Ciclo</option>
-                <option value="VII">VII Ciclo</option>
-            </select>
-
-            <input type="password" id="pass" placeholder="Contraseña" required>
-            
-            <button type="submit" class="btn-registrar">Registrar y Continuar</button>
+            <input type="text" id="nombre" placeholder="Nombre y Apellido" required>
+            <input type="email" id="correo" placeholder="Correo Electrónico" required>
+            <input type="text" id="codigo" placeholder="Código de Estudiante" required>
+            <input type="password" placeholder="Contraseña" required>
+            <button type="submit" class="btn-registrar">Guardar Registro</button>
         </form>
-
-        <a href="login.html" class="volver">¿Ya tienes cuenta? Inicia sesión</a>
+        <a href="login.html" class="volver">Volver al Login</a>
     </div>
 
     <script>
         document.getElementById('formRegistro').addEventListener('submit', function(e) {
             e.preventDefault();
-
-            // 1. Capturamos los datos
+            const nombreFull = document.getElementById('nombre').value;
             const nuevoUsuario = {
-                nombre: document.getElementById('nombre').value,
+                nombre: nombreFull,
                 email: document.getElementById('correo').value,
-                codigo: document.getElementById('codigo').value,
-                ciclo: document.getElementById('ciclo').value,
-                inicial: document.getElementById('nombre').value.charAt(0).toUpperCase(),
-                color: '#4285f4' // Color azul de Google por defecto
+                inicial: nombreFull.charAt(0).toUpperCase(),
+                color: '#4285f4'
             };
 
-            // 2. Guardar en la "Base de Datos" del navegador (LocalStorage)
-            // Primero traemos lo que ya existe o creamos una lista vacía
             let cuentas = JSON.parse(localStorage.getItem('misCuentas')) || [];
-            
-            // Agregamos el nuevo usuario a la lista
             cuentas.push(nuevoUsuario);
-            
-            // Guardamos la lista actualizada
             localStorage.setItem('misCuentas', JSON.stringify(cuentas));
 
-            // 3. Efecto de éxito y redirección
-            alert("¡Registro guardado con éxito, " + nuevoUsuario.nombre + "!");
-            window.location.href = "login.html"; // Regresamos al login para que vea su cuenta
+            alert("Registro guardado con éxito.");
+            window.location.href = "login.html";
         });
     </script>
 </body>
