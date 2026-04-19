@@ -3,109 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Portafolio</title>
+    <title>Registro - Portafolio</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: #1a1a2e; height: 100vh; display: flex; align-items: flex-end; justify-content: center; }
-        
-        .modal-selector {
-            background: #202124; width: 100%; max-width: 450px;
-            border-top-left-radius: 20px; border-top-right-radius: 20px;
-            padding: 25px; box-shadow: 0 -5px 25px rgba(0,0,0,0.6);
-            text-align: center;
-        }
-
-        .header-g { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-        .g-fake-logo { 
-            width: 20px; height: 20px; background: #ffffff; color: #4285f4; 
-            border-radius: 3px; font-weight: bold; font-size: 14px;
-        }
-        .g-text { color: #e8eaed; font-size: 0.9rem; }
-
-        .users-list { display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px; text-align: left; }
-        .user-option {
-            display: flex; align-items: center; padding: 12px; border-radius: 10px;
-            cursor: pointer; transition: 0.2s;
-        }
-        .user-option:hover { background: rgba(255,255,255,0.05); }
-
-        .user-avatar {
-            width: 40px; height: 40px; border-radius: 50%; display: flex;
-            justify-content: center; align-items: center; color: white;
-            font-weight: bold; margin-right: 15px;
-        }
-
-        .u-name { color: #e8eaed; font-size: 0.9rem; }
-        .u-email { color: #9aa0a6; font-size: 0.8rem; }
-
-        .btn-continuar {
-            width: 100%; background: #e94560; color: white; border: none; 
-            padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;
-        }
-        .btn-continuar:disabled { opacity: 0.3; }
-
-        .footer-links { margin-top: 20px; border-top: 1px solid #3c4043; padding-top: 15px; }
-        .link-reg { color: #e94560; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
-    </style>
 </head>
-<body>
+<body style="background: #1a1a2e; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px;">
 
-    <div class="modal-selector">
-        <div class="header-g">
-            <div class="g-fake-logo">G</div>
-            <p class="g-text">Selecciona una cuenta</p>
-        </div>
+    <div class="card-semana" style="max-width: 400px; width: 100%; background: white; border-top: 6px solid #e94560; padding: 30px; border-radius: 15px; text-align: center;">
+        <h2 id="tituloRegistro" style="margin-bottom: 20px; color: #1a1a2e;">Paso 1: Correo</h2>
+        
+        <form id="formRegistro" style="display: flex; flex-direction: column; gap: 15px;">
+            <div id="paso1">
+                <input type="email" id="regCorreo" placeholder="Introduce tu correo Google/UPLA" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 15px;">
+                <button type="button" onclick="irAlPaso2()" class="btn-t" style="width: 100%; background: #1a1a2e; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer;">Continuar</button>
+            </div>
 
-        <div class="users-list" id="listaCuentas">
-            <p style="color: #9aa0a6; font-size: 0.8rem; text-align: center; padding: 10px;">
-                No hay perfiles guardados.
-            </p>
-        </div>
+            <div id="paso2" style="display: none;">
+                <input type="text" id="regNombre" placeholder="Nombres y Apellidos" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 10px;">
+                <input type="password" id="regPass" placeholder="Crea tu contraseña" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 10px;">
+                <button type="submit" class="btn-t" style="width: 100%; background: #e94560; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Finalizar Registro</button>
+            </div>
+        </form>
 
-        <button class="btn-continuar" id="btnEntrar" disabled onclick="entrar()">Continuar</button>
-
-        <div class="footer-links">
-            <a href="registro.html" class="link-reg">Crear cuenta nueva</a>
-            <br><br>
-            <a href="index.html" style="color: #9aa0a6; text-decoration: none; font-size: 0.8rem;">Volver al inicio</a>
-        </div>
+        <br>
+        <a href="login.html" style="text-decoration: none; color: #777; font-size: 0.8rem;">← Volver al Login</a>
     </div>
 
     <script>
-        let seleccionado = "";
-
-        function cargar() {
-            const contenedor = document.getElementById('listaCuentas');
-            let cuentas = JSON.parse(localStorage.getItem('misCuentas')) || [];
-
-            if (cuentas.length > 0) {
-                contenedor.innerHTML = '';
-                cuentas.forEach((c) => {
-                    contenedor.innerHTML += `
-                        <div class="user-option" onclick="marcar('${c.nombre}')">
-                            <div class="user-avatar" style="background: ${c.color}">${c.inicial}</div>
-                            <div class="user-info">
-                                <p class="u-name">${c.nombre}</p>
-                                <p class="u-email">${c.email}</p>
-                            </div>
-                        </div>
-                    `;
-                });
+        function irAlPaso2() {
+            const correo = document.getElementById('regCorreo').value;
+            if(correo.includes('@')) {
+                document.getElementById('paso1').style.display = 'none';
+                document.getElementById('paso2').style.display = 'block';
+                document.getElementById('tituloRegistro').innerText = 'Paso 2: Datos';
+            } else {
+                alert('Por favor, ingresa un correo válido.');
             }
         }
 
-        function marcar(nombre) {
-            seleccionado = nombre;
-            document.getElementById('btnEntrar').disabled = false;
-        }
+        document.getElementById('formRegistro').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('regNombre').value;
+            const correo = document.getElementById('regCorreo').value;
 
-        function entrar() {
-            alert("Bienvenido " + seleccionado);
-            window.location.href = "index.html?admin=true";
-        }
+            const nuevoUsuario = {
+                nombre: nombre,
+                email: correo,
+                inicial: nombre.charAt(0).toUpperCase(),
+                color: '#e94560'
+            };
 
-        window.onload = cargar;
+            let cuentas = JSON.parse(localStorage.getItem('misCuentas')) || [];
+            cuentas.push(nuevoUsuario);
+            localStorage.setItem('misCuentas', JSON.stringify(cuentas));
+
+            alert('Cuenta creada exitosamente.');
+            window.location.href = 'login.html';
+        });
     </script>
 </body>
 </html>
