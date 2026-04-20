@@ -19,7 +19,6 @@
         <li><a href="#semanas">Semanas</a></li>
         <li><a href="#contacto">Contacto</a></li>
 
-        <!-- LOGIN / LOGOUT -->
         <li><a href="login.html" id="btnLogin" class="btn-login">Login</a></li>
         <li><a href="#" id="btnLogout" class="btn-login" style="display:none;" onclick="logout()">Cerrar sesión</a></li>
     </ul>
@@ -40,23 +39,61 @@
     </div>
 </section>
 
+<!-- 🔥 PANEL ADMIN MOVIDO ARRIBA -->
+<div id="adminPanel" style="display:none; margin:30px;">
+    <div style="background:#1e293b; padding:20px; border-radius:15px; color:white; box-shadow:0 10px 20px rgba(0,0,0,0.3);">
+        <h2>⚙️ Panel Administrador</h2>
+
+        <input type="text" id="titulo" placeholder="Título del trabajo" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:none;">
+
+        <input type="file" id="archivo" style="width:100%; padding:10px; margin-bottom:10px; background:white; border-radius:8px;">
+
+        <select id="semana" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px;">
+            <option value="">Seleccionar Semana</option>
+            <option value="1">Semana 1</option>
+            <option value="2">Semana 2</option>
+            <option value="3">Semana 3</option>
+            <option value="4">Semana 4</option>
+        </select>
+
+        <button onclick="agregar()" style="width:100%; padding:12px; background:#2563eb; color:white; border:none; border-radius:8px;">
+            ➕ Agregar Trabajo
+        </button>
+    </div>
+</div>
+
 <section id="semanas" class="semanas">
 <h2 class="titulo-seccion">AVANCES POR UNIDADES</h2>
 
 <!-- UNIDAD 1 -->
 <div class="unidad-caja">
     <h3 class="unidad-titulo">Unidad 1: Optimización y Transacciones</h3>
-    <div class="semanas-grid" id="contenedorTrabajos">
+    <div class="semanas-grid">
 
-        <div class="card-semana">
+        <!-- 🔥 IDs AGREGADOS -->
+        <div class="card-semana" id="sem1">
             <span class="nro-sem">1</span>
             <h4>Semana 1</h4>
-            <p>Arquitectura de Base de Datos</p>
+            <p class="tema-sem">Arquitectura de Base de Datos</p>
         </div>
 
-        <div class="card-semana pendiente"><span class="nro-sem">2</span><h4>Semana 2</h4></div>
-        <div class="card-semana pendiente"><span class="nro-sem">3</span><h4>Semana 3</h4></div>
-        <div class="card-semana pendiente"><span class="nro-sem">4</span><h4>Semana 4</h4></div>
+        <div class="card-semana pendiente" id="sem2">
+            <span class="nro-sem">2</span>
+            <h4>Semana 2</h4>
+            <p>Próximamente</p>
+        </div>
+
+        <div class="card-semana pendiente" id="sem3">
+            <span class="nro-sem">3</span>
+            <h4>Semana 3</h4>
+            <p>Próximamente</p>
+        </div>
+
+        <div class="card-semana pendiente" id="sem4">
+            <span class="nro-sem">4</span>
+            <h4>Semana 4</h4>
+            <p>Próximamente</p>
+        </div>
 
     </div>
 </div>
@@ -96,15 +133,7 @@
 
 </section>
 
-<!-- PANEL ADMIN -->
-<div id="adminPanel" style="display:none; padding:20px; background:#eee; margin:20px;">
-    <h3>Panel Admin</h3>
-    <input type="text" id="titulo" placeholder="Título">
-    <input type="text" id="link" placeholder="Link archivo">
-    <button onclick="agregar()">Agregar Trabajo</button>
-</div>
-
-</div>  <section id="contacto" class="contacto">  
+<section id="contacto" class="contacto">  
     <h2 class="titulo-seccion">Contacto</h2>  
     <div class="contacto-info">  
         <p><strong>Nombre:</strong> Henry Anderson Gomez Vasquez</p>  
@@ -142,42 +171,55 @@ window.onload = function(){
     cargarTrabajos();
 }
 
-// agregar trabajos
+// AGREGAR
 function agregar(){
     let t = document.getElementById("titulo").value;
-    let l = document.getElementById("link").value;
+    let archivo = document.getElementById("archivo").files[0];
+    let semana = document.getElementById("semana").value;
 
-    if(t === "" || l === ""){
+    if(t === "" || !archivo || semana === ""){
         alert("Completa los campos");
         return;
     }
 
     let trabajos = JSON.parse(localStorage.getItem("trabajos")) || [];
 
-    trabajos.push({titulo:t, link:l});
-    localStorage.setItem("trabajos", JSON.stringify(trabajos));
+    trabajos.push({
+        titulo:t,
+        archivo:archivo.name,
+        semana:semana
+    });
 
+    localStorage.setItem("trabajos", JSON.stringify(trabajos));
     location.reload();
 }
 
-// mostrar trabajos
+// MOSTRAR
 function cargarTrabajos(){
-    let cont = document.getElementById("contenedorTrabajos");
     let trabajos = JSON.parse(localStorage.getItem("trabajos")) || [];
 
-    trabajos.forEach(tr => {
+    trabajos.forEach((tr,index) => {
+        let cont = document.getElementById("sem"+tr.semana);
+
         let div = document.createElement("div");
-        div.className = "card-semana";
         div.innerHTML = `
-            <span class="nro-sem">+</span>
-            <h4>${tr.titulo}</h4>
-            <a href="${tr.link}" target="_blank">Ver archivo</a>
+            <p>📄 ${tr.titulo} (${tr.archivo})</p>
+            <button onclick="eliminar(${index})" style="background:red;color:white;border:none;padding:5px;border-radius:5px;">Eliminar</button>
         `;
+
         cont.appendChild(div);
     });
 }
 
-// logout
+// ELIMINAR
+function eliminar(index){
+    let trabajos = JSON.parse(localStorage.getItem("trabajos")) || [];
+    trabajos.splice(index,1);
+    localStorage.setItem("trabajos", JSON.stringify(trabajos));
+    location.reload();
+}
+
+// LOGOUT
 function logout(){
     localStorage.removeItem("rol");
     location.reload();
