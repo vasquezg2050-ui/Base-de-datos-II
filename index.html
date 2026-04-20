@@ -9,87 +9,109 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="img/logo.png" alt="Logo UPLA" class="logo-img">
-            <span class="logo-texto">UPLA - BD II</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#semanas">Semanas</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-
-            <!-- LOGIN / LOGOUT -->
-            <li><a href="login.html" id="btnLogin" class="btn-login">Login</a></li>
-            <li><a href="#" id="btnLogout" class="btn-login" style="display:none;" onclick="logout()">Cerrar sesión</a></li>
-        </ul>
-    </nav>
-
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <div class="profile-container">
-                <img src="img/perfil.jpeg" alt="Henry Anderson Gomez" class="profile-img">
-            </div>
-            <h1>Henry Anderson Gomez Vasquez</h1>
-            <p class="subtitulo">Estudiante de Ingeniería en la <span>UPLA</span></p>
-            <p class="especialidad">Especialización: <strong>Base de Datos II</strong></p>
-            
-            <div class="descripcion-pagina">
-                <p>Bienvenido a mi portafolio académico. En esta página veremos todos los <strong>avances en el transcurso del ciclo</strong> y también los trabajos dejados por el ingeniero a cargo, manteniendo un registro detallado de cada aprendizaje.</p>
-            </div>
-            <div class="scroll-indicator">Ver más abajo ↓</div>
-        </div>
-    </section>
-
-    <section id="semanas" class="semanas">
-        <h2 class="titulo-seccion">AVANCES POR UNIDADES</h2>
-
-        <div class="unidad-caja">
-            <h3 class="unidad-titulo">Unidad 1: Optimización y Transacciones</h3>
-            <div class="semanas-grid">
-                <div class="card-semana">
-                    <span class="nro-sem">1</span>
-                    <h4>Semana 1</h4>
-                    <p class="tema-sem">Arquitectura de Base de Datos</p>
-                    <div class="botones-tareas">
-                        <a href="documentos/clase_semana1.exe" download class="btn-t material">💾 Archivo Clase</a>
-                        <a href="documentos/resumen_semana1.pdf" target="_blank" class="btn-t">Resumen (PDF)</a>
-                        <a href="documentos/investigacion_semana1.pptx" target="_blank" class="btn-t">Investigación</a>
-                        <a href="https://github.com/vasquezg2050-ui/Base-de-datos-II" target="_blank" class="link-git">📁 Rep. GitHub</a>
-                    </div>
-                </div>
-
-                <!-- AQUÍ SE AGREGAN LOS TRABAJOS DINÁMICOS -->
-            </div>
-        </div>
-
-    </section>
-
-    <!-- PANEL ADMIN -->
-    <div id="adminPanel" style="display:none; padding:20px; background:#eee; margin:20px;">
-        <h3>Panel Admin</h3>
-        <input type="text" id="titulo" placeholder="Título">
-        <input type="text" id="link" placeholder="Link archivo">
-        <button onclick="agregar()">Agregar Trabajo</button>
+<nav class="navbar">
+    <div class="logo-container">
+        <img src="img/logo.png" class="logo-img">
+        <span class="logo-texto">UPLA - BD II</span>
     </div>
+    <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#semanas">Semanas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
 
-    <section id="contacto" class="contacto">
-        <h2 class="titulo-seccion">Contacto</h2>
-        <div class="contacto-info">
-            <p><strong>Nombre:</strong> Henry Anderson Gomez Vasquez</p>
-            <p><strong>Universidad:</strong> Universidad Peruana Los Andes</p>
+        <!-- LOGIN / LOGOUT -->
+        <li><a href="login.html" id="btnLogin" class="btn-login">Login</a></li>
+        <li><a href="#" id="btnLogout" class="btn-login" style="display:none;" onclick="logout()">Cerrar sesión</a></li>
+    </ul>
+</nav>
+
+<section id="inicio" class="hero">
+    <div class="hero-content">
+        <div class="profile-container">
+            <img src="img/perfil.jpeg" class="profile-img">
         </div>
-    </section>
+        <h1>Henry Anderson Gomez Vasquez</h1>
+        <p class="subtitulo">Estudiante de Ingeniería en la <span>UPLA</span></p>
+        <p class="especialidad">Especialización: <strong>Base de Datos II</strong></p>
+    </div>
+</section>
 
-    <footer>
-        <p>© 2026 Anderson Gomez | Facultad de Ingeniería - UPLA</p>
-    </footer>
+<section id="semanas" class="semanas">
+<h2 class="titulo-seccion">AVANCES POR UNIDADES</h2>
+
+<!-- UNIDAD 1 -->
+<div class="unidad-caja">
+    <h3 class="unidad-titulo">Unidad 1: Optimización y Transacciones</h3>
+    <div class="semanas-grid" id="contenedorTrabajos">
+
+        <div class="card-semana">
+            <span class="nro-sem">1</span>
+            <h4>Semana 1</h4>
+            <p>Arquitectura de Base de Datos</p>
+        </div>
+
+        <div class="card-semana pendiente"><span class="nro-sem">2</span><h4>Semana 2</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">3</span><h4>Semana 3</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">4</span><h4>Semana 4</h4></div>
+
+    </div>
+</div>
+
+<!-- UNIDAD 2 -->
+<div class="unidad-caja">
+    <h3 class="unidad-titulo">Unidad 2: Programación en Servidor</h3>
+    <div class="semanas-grid">
+        <div class="card-semana pendiente"><span class="nro-sem">5</span><h4>Semana 5</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">6</span><h4>Semana 6</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">7</span><h4>Semana 7</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">8</span><h4>Semana 8</h4></div>
+    </div>
+</div>
+
+<!-- UNIDAD 3 -->
+<div class="unidad-caja">
+    <h3 class="unidad-titulo">Unidad 3: Seguridad y Gestión</h3>
+    <div class="semanas-grid">
+        <div class="card-semana pendiente"><span class="nro-sem">9</span><h4>Semana 9</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">10</span><h4>Semana 10</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">11</span><h4>Semana 11</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">12</span><h4>Semana 12</h4></div>
+    </div>
+</div>
+
+<!-- UNIDAD 4 -->
+<div class="unidad-caja">
+    <h3 class="unidad-titulo">Unidad 4: Implementación Final</h3>
+    <div class="semanas-grid">
+        <div class="card-semana pendiente"><span class="nro-sem">13</span><h4>Semana 13</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">14</span><h4>Semana 14</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">15</span><h4>Semana 15</h4></div>
+        <div class="card-semana pendiente"><span class="nro-sem">16</span><h4>Semana 16</h4></div>
+    </div>
+</div>
+
+</section>
+
+<!-- PANEL ADMIN -->
+<div id="adminPanel" style="display:none; padding:20px; background:#eee; margin:20px;">
+    <h3>Panel Admin</h3>
+    <input type="text" id="titulo" placeholder="Título">
+    <input type="text" id="link" placeholder="Link archivo">
+    <button onclick="agregar()">Agregar Trabajo</button>
+</div>
+
+<section id="contacto">
+<h2>Contacto</h2>
+<p>Universidad Peruana Los Andes</p>
+</section>
+
+<footer>
+<p>© 2026 Anderson Gomez</p>
+</footer>
 
 <script>
 
-// ===== CARGA INICIAL =====
 window.onload = function(){
-
     let rol = localStorage.getItem("rol");
 
     let btnLogin = document.getElementById("btnLogin");
@@ -109,8 +131,7 @@ window.onload = function(){
     cargarTrabajos();
 }
 
-
-// ===== AGREGAR TRABAJOS =====
+// agregar trabajos
 function agregar(){
     let t = document.getElementById("titulo").value;
     let l = document.getElementById("link").value;
@@ -128,16 +149,16 @@ function agregar(){
     location.reload();
 }
 
-
-// ===== MOSTRAR TRABAJOS =====
+// mostrar trabajos
 function cargarTrabajos(){
-    let cont = document.querySelector(".semanas-grid");
+    let cont = document.getElementById("contenedorTrabajos");
     let trabajos = JSON.parse(localStorage.getItem("trabajos")) || [];
 
     trabajos.forEach(tr => {
         let div = document.createElement("div");
         div.className = "card-semana";
         div.innerHTML = `
+            <span class="nro-sem">+</span>
             <h4>${tr.titulo}</h4>
             <a href="${tr.link}" target="_blank">Ver archivo</a>
         `;
@@ -145,8 +166,7 @@ function cargarTrabajos(){
     });
 }
 
-
-// ===== CERRAR SESIÓN =====
+// logout
 function logout(){
     localStorage.removeItem("rol");
     location.reload();
