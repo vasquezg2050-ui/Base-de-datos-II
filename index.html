@@ -168,5 +168,14 @@ function logout(){
     location.reload();
 }
 </script>
+    <script>
+window.onload = function(){
+    let rol = localStorage.getItem("rol");
+
+    if(rol === "admin"){
+        document.getElementById("adminPanel").style.display = "block";
+    }
+}
+</script>
 </body>
 </html>
