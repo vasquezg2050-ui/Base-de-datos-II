@@ -4,112 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio Anderson Gomez - UPLA</title>
-    <link rel="stylesheet" href="style.css>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        #adminPanel { display: none; background: #202124; border-radius: 15px; padding: 25px; margin: 20px auto; max-width: 90%; border: 2px dashed #e94560; color: white; text-align: center; }
-        .admin-controls { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px; }
-        .btn-cargar { background: #e94560; color: white; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        .btn-dinamico { display: block; width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; text-decoration: none; font-size: 0.8rem; font-weight: bold; text-align: center; }
-        .bg-rojo { background: #e94560; color: white; }
-        .bg-oscuro { background: #1a1a2e; color: white; border: 1px solid #e94560; }
-        .contacto-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        .info-card { background: #16213e; padding: 25px; border-radius: 15px; border-left: 5px solid #e94560; text-align: left; transition: 0.3s; }
-        .info-card:hover { transform: translateY(-5px); }
-        .info-card h4 { color: #e94560; margin-bottom: 10px; font-size: 1.2rem; }
-    </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="logo-container">
-            <img src="imagen/logo.png" alt="Logo UPLA" class="logo-img">
+            <img src="img/logo.jpeg" alt="Logo UPLA" class="logo-img">
             <span class="logo-texto">UPLA - BD II</span>
         </div>
         <ul class="nav-links">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#semanas">Semanas</a></li>
             <li><a href="#contacto">Contacto</a></li>
-            <li><a href="login.html" class="btn-login">Login</a></li>
+            <li><a href="#" class="btn-login">Login</a></li>
         </ul>
     </nav>
-
-    <section id="adminPanel">
-        <h3>🛠️ Panel de Control de Anderson</h3>
-        <div class="admin-controls">
-            <select id="selectSemana">
-                <optgroup label="Unidad 1"><option value="2">Semana 2</option><option value="3">Semana 3</option></optgroup>
-                <optgroup label="Unidad 2"><option value="5">Semana 5</option></optgroup>
-            </select>
-            <input type="file" id="fileInput">
-            <button class="btn-cargar" onclick="subirArchivoSimulado()">Publicar Avance</button>
-        </div>
-    </section>
 
     <section id="inicio" class="hero">
         <div class="hero-content">
             <div class="profile-container">
-                <img src="imagen/perfil.jpeg" alt="Henry Anderson Gomez" class="profile-img">
+                <img src="img/perfil.jpeg" alt="Anderson Gomez" class="profile-img">
             </div>
             <h1>Henry Anderson Gomez Vasquez</h1>
             <p class="subtitulo">Estudiante de Ingeniería en la <span>UPLA</span></p>
             <p class="especialidad">Especialización: <strong>Base de Datos II</strong></p>
             <div class="descripcion-pagina">
-                <p>Bienvenido a mi portafolio académico. En esta página veremos todos los <strong>avances en el transcurso del ciclo</strong> y también los trabajos dejados por el ingeniero a cargo.</p>
+                <p>Bienvenido a mi portafolio académico. Aquí veremos todos los <strong>avances del ciclo</strong> y los trabajos del ingeniero a cargo.</p>
             </div>
-            <div class="scroll-indicator">Ver más abajo ↓</div>
         </div>
     </section>
 
     <section id="semanas" class="semanas">
-        <h2 class="titulo-seccion">AVANCES POR UNIDADES</h2>
-        <div class="unidad-caja">
-            <h3 class="unidad-titulo">Unidad 1: Optimización y Transacciones</h3>
+        <h2 class="titulo-seccion">PLAN DE ESTUDIOS - BASE DE DATOS II</h2>
+
+        <div class="unidad-contenedor">
+            <div class="unidad-header">Unidad 1 - Optimización y Transacciones</div>
             <div class="semanas-grid">
-                <div class="card-semana">
-                    <span class="nro-sem">1</span>
-                    <h4>Semana 1</h4>
-                    <p class="tema-sem">Arquitectura de Base de Datos</p>
-                    <div class="botones-tareas">
-                        <a href="documentos/clase_semana1.exe" download class="btn-t material">💾 Archivo Clase</a>
-                        <a href="documentos/resumen_semana1.pdf" target="_blank" class="btn-t">Resumen (PDF)</a>
-                        <a href="documentos/investigacion_semana1.pptx" target="_blank" class="btn-t">Investigación</a>
+                <div class="semana-card">
+                    <div class="circulo-nro">1</div>
+                    <p class="semana-txt">Semana 1</p>
+                    <div class="estado-buttons">
+                        <a href="documentos/resumen_semana1.pdf" target="_blank" class="btn-estado listo">Resumen</a>
+                        <a href="https://github.com/vasquezg2050-ui/Base-de-datos-II" target="_blank" class="btn-github">📁 REP. GITHUB</a>
                     </div>
                 </div>
-                <div class="card-semana pendiente" id="card-2"><span class="nro-sem" id="nro-2">2</span><h4>Semana 2</h4><div id="cont-2"><p>Próximamente</p></div></div>
-                <div class="card-semana pendiente" id="card-3"><span class="nro-sem" id="nro-3">3</span><h4>Semana 3</h4><div id="cont-3"><p>Próximamente</p></div></div>
-                <div class="card-semana pendiente" id="card-4"><span class="nro-sem" id="nro-4">4</span><h4>Semana 4</h4><div id="cont-4"><p>Próximamente</p></div></div>
+                <div class="semana-card">
+                    <div class="circulo-nro">2</div>
+                    <p class="semana-txt">Semana 2</p>
+                    <div class="estado-buttons">
+                        <span class="btn-estado orange">Pendiente</span>
+                    </div>
+                </div>
+                <div class="semana-card">
+                    <div class="circulo-nro">3</div>
+                    <p class="semana-txt">Semana 3</p>
+                    <div class="estado-buttons">
+                        <span class="btn-estado orange">Pendiente</span>
+                    </div>
+                </div>
+                <div class="semana-card">
+                    <div class="circulo-nro">4</div>
+                    <p class="semana-txt">Semana 4</p>
+                    <div class="estado-buttons">
+                        <span class="btn-estado orange">Pendiente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="unidad-contenedor">
+            <div class="unidad-header">Unidad 2 - Programación en Servidor</div>
+            <div class="semanas-grid">
+                <div class="semana-card"><div class="circulo-nro">5</div><p class="semana-txt">Semana 5</p><span class="btn-estado orange">Pendiente</span></div>
+                <div class="semana-card"><div class="circulo-nro">6</div><p class="semana-txt">Semana 6</p><span class="btn-estado orange">Pendiente</span></div>
+                <div class="semana-card"><div class="circulo-nro">7</div><p class="semana-txt">Semana 7</p><span class="btn-estado orange">Pendiente</span></div>
+                <div class="semana-card"><div class="circulo-nro">8</div><p class="semana-txt">Semana 8</p><span class="btn-estado orange">Pendiente</span></div>
             </div>
         </div>
     </section>
 
-    <section id="contacto" class="contacto">
-        <h2 class="titulo-seccion">Información de Contacto</h2>
-        <div class="contacto-container">
-            <div class="info-card"><h4>📍 Ubicación</h4><p>Chanchamayo, Junín - Perú</p></div>
-            <div class="info-card"><h4>🎓 Institución</h4><p>UPLA</p></div>
-            <div class="info-card"><h4>👨‍💻 Estudiante</h4><p>Henry Anderson Gomez Vasquez</p></div>
-        </div>
-    </section>
+    <footer>
+        <p>© 2026 Anderson Gomez | UPLA</p>
+    </footer>
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('admin') === 'true') { document.getElementById('adminPanel').style.display = 'block'; }
-
-        function subirArchivoSimulado() {
-            const sem = document.getElementById('selectSemana').value;
-            const archivo = document.getElementById('fileInput').files[0];
-            if (archivo) {
-                // CORREGIDO: Uso de acentos graves (``) para que el script funcione
-                const contenedor = document.getElementById(`cont-${sem}`);
-                const tarjeta = document.getElementById(`card-${sem}`);
-                const circulo = document.getElementById(`nro-${sem}`);
-                
-                contenedor.innerHTML = `<p style="color:#28a745;">📄 ${archivo.name}</p>`;
-                tarjeta.classList.remove('pendiente');
-                if(circulo) circulo.style.background = "#e94560";
-            }
-        }
-    </script>
 </body>
 </html>
