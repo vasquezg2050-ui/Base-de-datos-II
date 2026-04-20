@@ -1,4 +1,158 @@
-* *  {
+*  {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* NAVEGACIÓN */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    height: 80px;
+    background: #1a1a2e;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+}
+
+.logo-texto {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-login {
+    background: #e94560;
+    padding: 8px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+/* SECCIONES */
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+}
+
+/* INICIO / HERO */
+.hero {
+    background: #1a1a2e;
+    color: white;
+    text-align: center;
+}
+
+.profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid #e94560;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 10px; }
+.hero span { color: #e94560; }
+
+.descripcion-pagina {
+    max-width: 750px;
+    margin: 30px auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 5px solid #e94560;
+}
+
+/* === NUEVA ORGANIZACIÓN POR UNIDADES === */
+.semanas { 
+    background: #f4f7f6; /* Un color claro para que las unidades resalten */
+}
+
+.titulo-seccion { 
+    font-size: 2.5rem; 
+    margin-bottom: 40px; 
+    color: #1a1a2e; 
+    text-align: center;
+}
+
+.unidad-caja { 
+    margin-bottom: 50px; 
+    width: 100%; 
+    max-width: 1100px;
+}
+
+.unidad-titulo { 
+    background: #1a1a2e; 
+    color: white; 
+    padding: 10px 25px; 
+    border-radius: 8px; 
+    display: inline-block; 
+    margin-bottom: 25px; 
+    font-size: 1.2rem;
+    border-left: 5px solid #e94560;
+}
+
+/* Cuadrícula de 4 semanas */
+.semanas-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 20px;
+    width: 100%;
+}
+
+/* Tarjetas de Semanas (Mezclando tu estilo con la cuadrícula) */
+.card-semana {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    border-top: 5px solid #e94560; /* El color rojo que te gusta */
+    transition: 0.3s ease;
+}
+
+/* ESTILOS GENERALES (Tu base original) */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -167,71 +321,57 @@ section {
     margin-bottom: 15px;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-html { scroll-behavior: smooth; }
-
-.navbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0 10%; height: 80px; background: #1a1a2e;
-    color: white; position: fixed; top: 0; width: 100%; z-index: 1000;
+/* Botones dentro de las tarjetas */
+.botones-tareas { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    margin-top: 15px; 
 }
 
-.logo-container { display: flex; align-items: center; gap: 10px; }
-.logo-img { height: 40px; border-radius: 5px; }
-
-.nav-links { display: flex; list-style: none; }
-.nav-links li { margin-left: 20px; }
-.nav-links a { color: white; text-decoration: none; }
-
-.btn-login { background: #e94560; padding: 8px 15px; border-radius: 5px; }
-
-section { min-height: 100vh; padding: 100px 20px; display: flex; flex-direction: column; align-items: center; }
-
-/* Inicio */
-.hero { background: #1a1a2e; color: white; text-align: center; justify-content: center; }
-.profile-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #e94560; object-fit: cover; margin-bottom: 15px; }
-.descripcion-pagina { max-width: 600px; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; border-left: 5px solid #e94560; margin-top: 20px; }
-
-/* Estilo de Unidades (Igual a tu foto) */
-.semanas { background: #4d4d4d; } /* Fondo oscuro para que resalte la unidad */
-.titulo-seccion { color: white; margin-bottom: 30px; font-size: 2rem; }
-
-.unidad-contenedor {
-    background: #8b3d5a; /* Color uva/rosado oscuro de la foto */
-    width: 95%; max-width: 1000px; border-radius: 20px;
-    padding: 25px; margin-bottom: 40px;
+.btn-t { 
+    background: #16213e; 
+    color: white; 
+    text-decoration: none; 
+    font-size: 0.85rem; 
+    padding: 10px; 
+    border-radius: 8px; 
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.unidad-header {
-    background: #ff7597; /* Rosado claro */
-    color: white; padding: 8px 20px; border-radius: 12px;
-    display: inline-block; font-weight: bold; margin-bottom: 20px;
+.btn-t:hover { 
+    background: #e94560; 
 }
 
-.semanas-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;
+.btn-t.material {
+    background: #e94560;
 }
 
-.semana-card {
-    background: #fdf6f0; border-radius: 15px; padding: 20px;
-    display: flex; flex-direction: column; align-items: center;
+.link-git { 
+    font-size: 0.75rem; 
+    color: #777; 
+    text-decoration: none; 
+    margin-top: 5px;
 }
 
-.circulo-nro {
-    background: #e94560; color: white; width: 45px; height: 45px;
-    border-radius: 50%; display: flex; justify-content: center; align-items: center;
-    font-weight: bold; margin-bottom: 10px;
+/* Estilo para las que aún no tienen contenido */
+.pendiente { 
+    opacity: 0.7; 
+    border-top: 5px solid #ccc; 
 }
 
-.estado-buttons { display: flex; flex-direction: column; gap: 8px; width: 100%; }
-
-.btn-estado {
-    font-size: 0.75rem; padding: 6px; border-radius: 15px;
-    text-align: center; text-decoration: none; font-weight: bold;
+/* CONTACTO (Tu estilo original) */
+.contacto { background: #f4f7f6; }
+.form-contacto { width: 100%; max-width: 500px; display: flex; flex-direction: column; margin-top: 20px; }
+.form-contacto input, .form-contacto textarea {
+    padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px;
+}
+.form-contacto button {
+    padding: 15px; background: #e94560; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;
 }
 
-.listo { background: #ffb347; color: white; } /* Color naranja "pendiente" en tu foto es el que se usa */
-.orange { background: #ffb347; color: white; opacity: 0.6; }
-.btn-github { font-size: 0.7rem; color: #777; text-decoration: none; text-align: center; }
-
-footer { background: #1a1a2e; color: white; padding: 20px; text-align: center; }
+/* FOOTER */
+footer {
+    background: #1a1a2e; color: white; text-align: center; padding: 25px;
+}
