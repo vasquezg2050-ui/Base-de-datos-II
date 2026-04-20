@@ -115,6 +115,51 @@ function login(){
     return false;
 }
 </script>
+<script>
+// mostrar registro
+function mostrarRegistro(){
+    document.getElementById("registroBox").style.display = "block";
+}
+function registrar(){
+    let user = document.getElementById("newUser").value;
+    let pass = document.getElementById("newPass").value;
 
+    if(user === "" || pass === ""){
+        alert("Completa los campos");
+        return;
+    }
+
+    localStorage.setItem("user", user);
+    localStorage.setItem("pass", pass);
+
+    alert("Registro exitoso");
+}
+
+
+function login(){
+    let u = document.getElementById("user").value;
+    let p = document.getElementById("pass").value;
+
+    let savedUser = localStorage.getItem("user");
+    let savedPass = localStorage.getItem("pass");
+
+    // admin
+    if(u === "admin" && p === "1234"){
+        localStorage.setItem("admin","true");
+        window.location.href = "index.html";
+    }
+    // usuario registrado
+    else if(u === savedUser && p === savedPass){
+        alert("Bienvenido usuario");
+        window.location.href = "index.html";
+    }
+    else{
+        alert("Datos incorrectos");
+    }
+
+    return false;
+}
+</script>
+</script>
 </body>
 </html>
