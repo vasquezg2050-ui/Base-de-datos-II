@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio Anderson Gomez - UPLA</title>
-    <link rel="stylesheet" href="estyle.css">
+    <link rel="stylesheet" href="estilo.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         #adminPanel { display: none; background: #202124; border-radius: 15px; padding: 25px; margin: 20px auto; max-width: 90%; border: 2px dashed #e94560; color: white; text-align: center; }
@@ -81,7 +81,7 @@
                 <div class="card-semana pendiente" id="card-4"><span class="nro-sem" id="nro-4">4</span><h4>Semana 4</h4><div id="cont-4"><p>Próximamente</p></div></div>
             </div>
         </div>
-        </section>
+    </section>
 
     <section id="contacto" class="contacto">
         <h2 class="titulo-seccion">Información de Contacto</h2>
@@ -100,12 +100,12 @@
             const sem = document.getElementById('selectSemana').value;
             const archivo = document.getElementById('fileInput').files[0];
             if (archivo) {
-                // CORRECCIÓN: Uso de comillas invertidas para el ID
-                const contenedor = document.getElementById(cont-${sem});
-                const tarjeta = document.getElementById(card-${sem});
-                const circulo = document.getElementById(nro-${sem});
+                // CORREGIDO: Uso de acentos graves (``) para que el script funcione
+                const contenedor = document.getElementById(`cont-${sem}`);
+                const tarjeta = document.getElementById(`card-${sem}`);
+                const circulo = document.getElementById(`nro-${sem}`);
                 
-                contenedor.innerHTML = <p style="color:#28a745;">📄 ${archivo.name}</p>;
+                contenedor.innerHTML = `<p style="color:#28a745;">📄 ${archivo.name}</p>`;
                 tarjeta.classList.remove('pendiente');
                 if(circulo) circulo.style.background = "#e94560";
             }
