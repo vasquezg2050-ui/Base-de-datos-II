@@ -92,7 +92,12 @@ body{
 ¿No tienes cuenta? 
 <a href="#" onclick="mostrarRegistro()">Regístrate</a>
 </p>
-
+    <div id="registroBox" style="display:none; margin-top:20px;">
+        <h3>Registro</h3>
+        <input type="text" id="newUser" placeholder="Nuevo usuario">
+        <input type="password" id="newPass" placeholder="Nueva contraseña">
+        <button onclick="registrar()">Registrarse</button>
+    </div>
     <a href="index.html" class="volver">← Volver</a>
 </div>
 
