@@ -44,7 +44,7 @@
     <div style="background:#1e293b; padding:20px; border-radius:15px; color:white; box-shadow:0 10px 20px rgba(0,0,0,0.3);">
         <h2>⚙️ Panel Administrador</h2>
 
-        <input type="text" id="link" placeholder="Link del del PDF" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:none;">
+        <input type="text" id="Titulo" placeholder="Titulo del trabajo" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:none;">
 
         <input type="file" id="archivo" style="width:100%; padding:10px; margin-bottom:10px; background:white; border-radius:8px;">
 
@@ -184,7 +184,7 @@ function agregar(){
     let unidad = document.getElementById("unidad").value;
     let semana = document.getElementById("semana").value;
 
-    if(t === "" || !archivo || semana === "" || unidad === ""){
+    if(t === "" || !link || semana === "" || unidad === ""){
         alert("Completa los campos");
         return;
     }
@@ -212,8 +212,9 @@ function cargarTrabajos(){
         div.innerHTML = `
         <p>📄 ${tr.titulo}</p>
          <a href="${tr.link}" target="_blank">Ver PDF</a>
-            <button onclick="eliminar(${index})" style="background:red;color:white;border:none;padding:5px;border-radius:5px;">Eliminar</button>
-        `;
+            ${localStorage.getItem("rol") === "admin" ? 
+            <button onclick="eliminar(${index})" style="background:red;color:white;border:none;padding:5px;border-radius:5px;">Eliminar</button> 
+          :""} style="background:red;color:white;border:none;padding:5px;border-radius:5px;">Eliminar</button>`;
 
         cont.appendChild(div);
     });
