@@ -240,7 +240,7 @@ document.getElementById("unidad").addEventListener("change", function(){
     let inicio = (unidad - 1) * 4 + 1;
 
     for(let i = inicio; i < inicio + 4; i++){
-        semana.innerHTML += <option value="${i}">Semana ${i}</option>;
+        semana.innerHTML += `<option value="${i}">Semana ${i}</option>`;
     }
 });
 </script>
