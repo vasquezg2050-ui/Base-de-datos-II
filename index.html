@@ -44,7 +44,7 @@
     <div style="background:#1e293b; padding:20px; border-radius:15px; color:white; box-shadow:0 10px 20px rgba(0,0,0,0.3);">
         <h2>⚙️ Panel Administrador</h2>
 
-        <input type="text" id="titulo" placeholder="Título del trabajo" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:none;">
+        <input type="text" id="link" placeholder="Link del del PDF" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:none;">
 
         <input type="file" id="archivo" style="width:100%; padding:10px; margin-bottom:10px; background:white; border-radius:8px;">
 
@@ -180,7 +180,7 @@ window.onload = function(){
 // AGREGAR
 function agregar(){
     let t = document.getElementById("titulo").value;
-    let archivo = document.getElementById("archivo").files[0];
+    let link = document.getElementById("link").value;
     let unidad = document.getElementById("unidad").value;
     let semana = document.getElementById("semana").value;
 
@@ -193,7 +193,7 @@ function agregar(){
 
     trabajos.push({
         titulo:t,
-        archivo:archivo.name,
+        link: link,
         semana:semana
     });
 
@@ -210,7 +210,8 @@ function cargarTrabajos(){
 
         let div = document.createElement("div");
         div.innerHTML = `
-            <p>📄 ${tr.titulo} (${tr.archivo})</p>
+        <p>📄 ${tr.titulo}</p>
+         <a href="${tr.link}" target="_blank">Ver PDF</a>
             <button onclick="eliminar(${index})" style="background:red;color:white;border:none;padding:5px;border-radius:5px;">Eliminar</button>
         `;
 
