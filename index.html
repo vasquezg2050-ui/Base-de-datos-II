@@ -46,7 +46,7 @@
 
         <input type="text" id="Titulo" placeholder="Titulo del trabajo" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:none;">
 
-        <input type="text" id="link" placeholder="Link del PDF" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:none;">
+        <input type="file" id="archivo" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:none;">
 
         <select id="unidad" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px;">
             <option value="">Seleccionar Unidad</option>
@@ -187,14 +187,37 @@ window.onload = function(){
 // AGREGAR A SUPABASE
 async function agregar(){
     let t = document.getElementById("Titulo").value;
-    let link = document.getElementById("link").value;
+    let archivo = document.getElementById("archivo").files[0];
     let unidad = document.getElementById("unidad").value;
     let semana = document.getElementById("semana").value;
 
-    if(t === "" || link === "" || semana === "" || unidad === ""){
+    if(t === "" || archivo === "" || semana === "" || unidad === ""){
         alert("Completa los campos");
         return;
     }
+    
+    let nombreArchivo = Date.now() + "_" + archivo.name;
+
+    const { error: errorSubida } = await supabaseClient.storage
+        .from("trabajos")
+        .upload(nombreArchivo, archivo);
+
+    if(errorSubida){
+        alert("Error subiendo archivo");
+        console.log(errorSubida);
+        return;
+           }
+    // 🔥 obtener URL
+    const { data } = supabaseClient.storage
+        .from("trabajos")
+        .getPublicUrl(nombreArchivo);
+
+    let url = data.publicUrl;
+
+    // 🔥 guardar en tabla
+    const { error } = await supabaseClient
+        .from("trabajos")
+        .insert([{ titulo: t, link: url, semana: semana, unidad: unidad }]);
 
     const { error } = await supabaseClient
         .from("trabajos")
