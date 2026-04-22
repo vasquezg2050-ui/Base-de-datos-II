@@ -212,9 +212,13 @@ async function agregar(){
   }
 
   // 2) url pública (si tu bucket/objeto es público)
-  const { data: urlData, error: urlErr } = supabaseClient.storage
-    .from("trabajos")
-    .getPublicUrl(nombreArchivo);
+  const { data: signed, error: signErr } = await supabaseClient
+  .storage
+  .from("trabajos")
+  .createSignedUrl(nombreArchivo, 60 * 60); // 1 hora
+
+if (signErr) throw signErr;
+let url = signed.signedUrl;
 
   console.log("urlData:", urlData);
   console.log("urlErr:", urlErr);
