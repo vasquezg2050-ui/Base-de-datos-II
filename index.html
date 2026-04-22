@@ -186,44 +186,53 @@ window.onload = function(){
 
 // AGREGAR A SUPABASE
 async function agregar(){
-    let t = document.getElementById("Titulo").value;
-    let archivo = document.getElementById("archivo").files[0];
-    let unidad = document.getElementById("unidad").value;
-    let semana = document.getElementById("semana").value;
+  let t = document.getElementById("Titulo").value;
+  let archivo = document.getElementById("archivo").files[0];
+  let unidad = document.getElementById("unidad").value;
+  let semana = document.getElementById("semana").value;
 
-    if(t === "" || !archivo || semana === "" || unidad === ""){
-        alert("Completa los campos");
-        return;
-    }
-    
-    let nombreArchivo = Date.now() + "_" + archivo.name;
+  if(t === "" || !archivo || semana === "" || unidad === ""){
+    alert("Completa los campos");
+    return;
+  }
 
-    const { error: errorSubida } = await supabaseClient.storage
-        .from("trabajos")
-        .upload(nombreArchivo, archivo);
+  let nombreArchivo = Date.now() + "_" + archivo.name;
 
-    if(errorSubida){
-        alert("Error subiendo archivo");
-        console.log(errorSubida);
-        return;
-           }
-    // 🔥 obtener URL
-    const { data } = supabaseClient.storage
-        .from("trabajos")
-        .getPublicUrl(nombreArchivo);
+  // 1) subir
+  const { data: upData, error: errorSubida } = await supabaseClient.storage
+    .from("trabajos")
+    .upload(nombreArchivo, archivo);
 
-    let url = data.publicUrl;
-    
-    const { error } = await supabaseClient
-        .from("trabajos")
-        .insert([{ titulo: t, link: url, semana: semana, unidad: unidad }]);
+  console.log("upload data:", upData);
+  console.log("upload error:", errorSubida);
 
-    if(error){
-        alert("Error al guardar");
-        console.log(error);
-    } else {
-        location.reload();
-    }
+  if(errorSubida){
+    alert("Error subiendo archivo (ver consola)");
+    return;
+  }
+
+  // 2) url pública (si tu bucket/objeto es público)
+  const { data: urlData, error: urlErr } = supabaseClient.storage
+    .from("trabajos")
+    .getPublicUrl(nombreArchivo);
+
+  console.log("urlData:", urlData);
+  console.log("urlErr:", urlErr);
+
+  let url = urlData.publicUrl;
+
+  // 3) insertar en tabla
+  const { error } = await supabaseClient
+    .from("trabajos")
+    .insert([{ titulo: t, link: url, semana: semana, unidad: unidad }]);
+
+  console.log("insert error:", error);
+
+  if(error){
+    alert("Error al guardar (ver consola)");
+  } else {
+    location.reload();
+  }
 }
 
 // MOSTRAR DESDE SUPABASE
