@@ -191,7 +191,7 @@ async function agregar(){
     let unidad = document.getElementById("unidad").value;
     let semana = document.getElementById("semana").value;
 
-    if(t === "" || archivo === "" || semana === "" || unidad === ""){
+    if(t === "" || !archivo === || semana === "" || unidad === ""){
         alert("Completa los campos");
         return;
     }
@@ -213,12 +213,7 @@ async function agregar(){
         .getPublicUrl(nombreArchivo);
 
     let url = data.publicUrl;
-
-    // 🔥 guardar en tabla
-    const { error } = await supabaseClient
-        .from("trabajos")
-        .insert([{ titulo: t, link: url, semana: semana, unidad: unidad }]);
-
+    
     const { error } = await supabaseClient
         .from("trabajos")
         .insert([{ titulo: t, link: link, semana: semana, unidad: unidad }]);
