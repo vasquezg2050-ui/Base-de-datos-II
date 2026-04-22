@@ -228,7 +228,7 @@ async function cargarTrabajos(){
         <p>📄 ${tr.titulo}</p>
         <a href="${tr.link}" target="_blank">Ver PDF</a>
         ${localStorage.getItem("rol") === "admin" 
-            ? <button onclick="eliminar(${tr.id})" style="background:red;color:white;border:none;padding:5px;border-radius:5px;">Eliminar</button> 
+            ? `<button onclick="eliminar(${tr.id})" style="background:red;color:white;border:none;padding:5px;border-radius:5px;">Eliminar</button>` 
             : ""}
         `;
 
