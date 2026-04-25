@@ -68,12 +68,11 @@
 
 <section id="semanas" class="semanas">
 <h2 class="titulo-seccion">AVANCES POR UNIDADES</h2>
-<!-- UNIDAD 1 -->
+
 <div class="unidad-caja">
     <h3 class="unidad-titulo">Unidad 1: Optimización y Transacciones</h3>
     <div class="semanas-grid">
 
-        <!-- 🔥 IDs AGREGADOS -->
         <div class="card-semana" id="sem1">
             <span class="nro-sem">1</span>
             <h4>Semana 1</h4>
@@ -84,84 +83,35 @@
             <span class="nro-sem">2</span>
             <p class="tema-sem">Gestores de Base de Datos</p>
             <h4>Semana 2</h4>
-            <p>Próximamente</p>
         </div>
 
         <div class="card-semana pendiente" id="sem3">
             <span class="nro-sem">3</span>
             <p class="tema-sem">Arquitectura de Base de Datos</p>
             <h4>Semana 3</h4>
-            <p>Próximamente</p>
         </div>
 
         <div class="card-semana pendiente" id="sem4">
             <span class="nro-sem">4</span>
             <p class="tema-sem">Diseño de la Arquitectura de Base de Datos</p>
             <h4>Semana 4</h4>
-            <p>Próximamente</p>
         </div>
 
     </div>
 </div>
 
-<!-- UNIDAD 2 -->
-<div class="unidad-caja">
-    <h3 class="unidad-titulo">Unidad 2: Programación en Servidor</h3>
-    <div class="semanas-grid">
-        <div class="card-semana pendiente" id="sem5"><span class="nro-sem">5</span><h4>Semana 5</h4></div>
-        <div class="card-semana pendiente"id="sem6"><span class="nro-sem">6</span><h4>Semana 6</h4></div>
-        <div class="card-semana pendiente"id="sem7"><span class="nro-sem">7</span><h4>Semana 7</h4></div>
-        <div class="card-semana pendiente"id="sem8"><span class="nro-sem">8</span><h4>Semana 8</h4></div>
-    </div>
-</div>
-
-<!-- UNIDAD 3 -->
-<div class="unidad-caja">
-    <h3 class="unidad-titulo">Unidad 3: Seguridad y Gestión</h3>
-    <div class="semanas-grid">
-        <div class="card-semana pendiente"id="sem9"><span class="nro-sem">9</span><h4>Semana 9</h4></div>
-        <div class="card-semana pendiente"id="sem10"><span class="nro-sem">10</span><h4>Semana 10</h4></div>
-        <div class="card-semana pendiente"id="sem11"><span class="nro-sem">11</span><h4>Semana 11</h4></div>
-        <div class="card-semana pendiente"id="sem12"><span class="nro-sem">12</span><h4>Semana 12</h4></div>
-    </div>
-</div>
-
-<!-- UNIDAD 4 -->
-<div class="unidad-caja">
-    <h3 class="unidad-titulo">Unidad 4: Implementación Final</h3>
-    <div class="semanas-grid">
-        <div class="card-semana pendiente"id="sem13"><span class="nro-sem">13</span><h4>Semana 13</h4></div>
-        <div class="card-semana pendiente"id="sem14"><span class="nro-sem">14</span><h4>Semana 14</h4></div>
-        <div class="card-semana pendiente"id="sem15"><span class="nro-sem">15</span><h4>Semana 15</h4></div>
-        <div class="card-semana pendiente"id="sem16"><span class="nro-sem">16</span><h4>Semana 16</h4></div>
-    </div>
-</div>
-
-</section>
-
-<section id="contacto" class="contacto">  
-    <h2 class="titulo-seccion">Contacto</h2>  
-    <div class="contacto-info">  
-        <p><strong>Nombre:</strong> Henry Anderson Gomez Vasquez</p>  
-        <p><strong>Universidad:</strong> Universidad Peruana Los Andes</p>  
-    </div>  
-    <form class="form-contacto">  
-        <input type="text" placeholder="Escribe tu nombre">  
-        <textarea placeholder="Tu mensaje"></textarea>  
-        <button type="button">Enviar Mensaje</button>  
 </section>
 
 <footer>
 <p>© 2026 Anderson Gomez</p>
 </footer>
 
-<!-- 🔥 SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <script>
 const supabaseClient = supabase.createClient(
     "https://dyuxvvstvewloqheyhla.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5dXh2dnN0dmV3bG9xaGV5aGxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDE4OTIsImV4cCI6MjA5MjM3Nzg5Mn0.9FGsqCWazuUewdkwaZwDFw2aYCwwnZawo0HJIsK133k"
+    "TU_KEY"
 );
 
 window.onload = function(){
@@ -184,7 +134,7 @@ window.onload = function(){
     cargarTrabajos();
 }
 
-// AGREGAR A SUPABASE
+// AGREGAR
 async function agregar(){
   let t = document.getElementById("Titulo").value;
   let archivo = document.getElementById("archivo").files[0];
@@ -198,47 +148,35 @@ async function agregar(){
 
   let nombreArchivo = Date.now() + "_" + archivo.name;
 
-  // 1) subir
-  const { data: upData, error: errorSubida } = await supabaseClient.storage
+  const { error: errorSubida } = await supabaseClient.storage
     .from("trabajos")
     .upload(nombreArchivo, archivo);
 
-  console.log("upload data:", upData);
-  console.log("upload error:", errorSubida);
-
   if(errorSubida){
-    alert("Error subiendo archivo (ver consola)");
+    alert("Error subiendo archivo");
+    console.log(errorSubida);
     return;
   }
 
-  // 2) url pública (si tu bucket/objeto es público)
- const { data: urlData, error: urlErr } = await supabaseClient
-  .storage
-  .from("trabajos")
-  .getPublicUrl(nombreArchivo);
+  const { data } = supabaseClient.storage
+    .from("trabajos")
+    .getPublicUrl(nombreArchivo);
 
-let url = urlData.publicUrl;
+  let url = data.publicUrl;
 
-  console.log("urlData:", urlData);
-  console.log("urlErr:", urlErr);
-
-  let url = urlData.publicUrl;
-
-  // 3) insertar en tabla
   const { error } = await supabaseClient
     .from("trabajos")
     .insert([{ titulo: t, link: url, semana: semana, unidad: unidad }]);
 
-  console.log("insert error:", error);
-
   if(error){
-    alert("Error al guardar (ver consola)");
+    alert("Error al guardar");
+    console.log(error);
   } else {
     location.reload();
   }
 }
 
-// MOSTRAR DESDE SUPABASE
+// MOSTRAR
 async function cargarTrabajos(){
     const { data, error } = await supabaseClient
         .from("trabajos")
@@ -249,34 +187,21 @@ async function cargarTrabajos(){
         return;
     }
 
-    data.forEach((tr,index) => {
+    data.forEach((tr) => {
         let cont = document.getElementById("sem"+tr.semana);
+        if(!cont) return;
 
         let div = document.createElement("div");
 
         div.innerHTML = `
         <p>📄 ${tr.titulo}</p>
         <a href="${tr.link}" target="_blank">Ver PDF</a>
-        ${localStorage.getItem("rol") === "admin" 
-            ? `<button onclick="eliminar(${tr.id})" style="background:red;color:white;border:none;padding:5px;border-radius:5px;">Eliminar</button>` 
-            : ""}
         `;
 
         cont.appendChild(div);
     });
 }
 
-// ELIMINAR EN SUPABASE
-async function eliminar(id){
-    await supabaseClient
-        .from("trabajos")
-        .delete()
-        .eq("id", id);
-
-    location.reload();
-}
-
-// LOGOUT
 function logout(){
     localStorage.removeItem("rol");
     location.reload();
