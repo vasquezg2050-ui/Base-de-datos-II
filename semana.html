@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trabajos por Semana</title>
+
+<style>
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+.container{
+    max-width: 900px;
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card{
+    background: #1e293b;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+a{
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.btn-eliminar{
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn-eliminar:hover{
+    background: #dc2626;
+}
+
+.btn-volver{
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: #2563eb;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-volver:hover{
+    background: #1d4ed8;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1 id="titulo">Semana</h1>
+
+<div id="lista"></div>
+
+<button class="btn-volver" onclick="volver()">⬅ Volver</button>
+
+</div>
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+const supabaseClient = supabase.createClient(
+    "https://gekfhjbteilxldcptjhr.supabase.co",
+    "sb_publishable_Eg0_hi4tgCYK9UqyWzIWwg_AyuglRCc"
+);
+
+// obtener semana
+let params = new URLSearchParams(window.location.search);
+let semana = params.get("sem");
+
+document.getElementById("titulo").innerText = "Trabajos - Semana " + semana;
+
+// cargar trabajos
+async function cargar(){
+    const { data, error } = await supabaseClient
+        .from("trabajos")
+        .select("*")
+        .eq("semana", semana);
+
+    if(error){
+        console.log(error);
+        return;
+    }
+
+    if(data.length === 0){
+        document.getElementById("lista").innerHTML = "<p>No hay trabajos aún</p>";
+        return;
+    }
+
+    data.forEach(tr => {
+        let div = document.createElement("div");
+        div.className = "card";
+
+        div.innerHTML = `
+        <p>${tr.titulo}</p>
+        <a href="${tr.link}" target="_blank">📄 Ver PDF</a>
+        ${localStorage.getItem("rol") === "admin" 
+            ? <br><button class="btn-eliminar" onclick="eliminar(${tr.id})">Eliminar</button> 
+            : ""}
+        `;
+
+        document.getElementById("lista").appendChild(div);
+    });
+}
+
+// eliminar
+async function eliminar(id){
+    await supabaseClient
+        .from("trabajos")
+        .delete()
+        .eq("id", id);
+
+    location.reload();
+}
+
+// volver
+function volver(){
+    window.location.href = "index.html";
+}
+
+cargar();
+</script>
+
+</body>
+</html>
