@@ -98,6 +98,7 @@
         </div>
        </div>
       </div>
+
 <!-- UNIDAD 2 -->
 <div class="unidad-caja">
     <h3 class="unidad-titulo">Unidad 2: Programación en Servidor</h3>
@@ -196,8 +197,6 @@ window.onload = function(){
         btnLogin.style.display = "none";
         btnLogout.style.display = "inline-block";
     }
-
-    cargarTrabajos();
 }
 
 // AGREGAR
@@ -242,32 +241,6 @@ async function agregar(){
   }
 }
 
-// MOSTRAR
-async function cargarTrabajos(){
-    const { data, error } = await supabaseClient
-        .from("trabajos")
-        .select("*");
-
-    if(error){
-        console.log(error);
-        return;
-    }
-
-    data.forEach((tr) => {
-        let cont = document.getElementById("sem"+tr.semana);
-        if(!cont) return;
-
-        let div = document.createElement("div");
-
-        div.innerHTML = `
-        <p>📄 ${tr.titulo}</p>
-        <a href="${tr.link}" target="_blank">Ver PDF</a>
-        `;
-
-        cont.appendChild(div);
-    });
-}
-
 function logout(){
     localStorage.removeItem("rol");
     location.reload();
@@ -288,10 +261,12 @@ document.getElementById("unidad").addEventListener("change", function(){
     }
 });
 </script>
-    <script>
+
+<script>
 function abrirSemana(num){
     window.location.href = "semana.html?sem=" + num;
 }
 </script>
+
 </body>
 </html>
