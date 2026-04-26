@@ -125,7 +125,7 @@ async function cargar(){
         <p>${tr.titulo}</p>
         <a href="${tr.link}" target="_blank">📄 Ver PDF</a>
         ${localStorage.getItem("rol") === "admin" 
-            ? <br><button class="btn-eliminar" onclick="eliminar(${tr.id})">Eliminar</button> 
+            ? `<br><button class="btn-eliminar" onclick="eliminar(${tr.id})">Eliminar</button>` 
             : ""}
         `;
 
