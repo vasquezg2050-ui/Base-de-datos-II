@@ -73,25 +73,25 @@
     <h3 class="unidad-titulo">Unidad 1: Optimización y Transacciones</h3>
     <div class="semanas-grid">
 
-        <div class="card-semana" id="sem1">
+        <div class="card-semana" id="sem1" onclick="abrirSemana(1)">
             <span class="nro-sem">1</span>
             <h4>Semana 1</h4>
             <p class="tema-sem">Introducion a la Arquitectura de Base de Datos</p>
         </div>
 
-        <div class="card-semana pendiente" id="sem2">
+        <div class="card-semana pendiente" id="sem2" onclick="abrirSemana(2)">
             <span class="nro-sem">2</span>
             <p class="tema-sem">Gestores de Base de Datos</p>
             <h4>Semana 2</h4>
         </div>
 
-        <div class="card-semana pendiente" id="sem3">
+        <div class="card-semana pendiente" id="sem3" onclick="abrirSemana(3)">
             <span class="nro-sem">3</span>
             <p class="tema-sem">Arquitectura de Base de Datos</p>
             <h4>Semana 3</h4>
         </div>
 
-        <div class="card-semana pendiente" id="sem4">
+        <div class="card-semana pendiente" id="sem4" onclick="abrirSemana(4)">
             <span class="nro-sem">4</span>
             <p class="tema-sem">Diseño de la Arquitectura de Base de Datos</p>
             <h4>Semana 4</h4>
@@ -102,19 +102,19 @@
 <div class="unidad-caja">
     <h3 class="unidad-titulo">Unidad 2: Programación en Servidor</h3>
     <div class="semanas-grid">
-        <div class="card-semana pendiente" id="sem5">
+        <div class="card-semana pendiente" id="sem5" onclick="abrirSemana(5)">
             <span class="nro-sem">5</span>
             <h4>Semana 5</h4>
         </div>
-        <div class="card-semana pendiente" id="sem6">
+        <div class="card-semana pendiente" id="sem6" onclick="abrirSemana(6)">
             <span class="nro-sem">6</span>
             <h4>Semana 6</h4>
         </div>
-        <div class="card-semana pendiente" id="sem7">
+        <div class="card-semana pendiente" id="sem7" onclick="abrirSemana(7)">
             <span class="nro-sem">7</span>
             <h4>Semana 7</h4>
         </div>
-        <div class="card-semana pendiente" id="sem8">
+        <div class="card-semana pendiente" id="sem8" onclick="abrirSemana(8)">
             <span class="nro-sem">8</span>
             <h4>Semana 8</h4>
         </div>
@@ -125,19 +125,19 @@
 <div class="unidad-caja">
     <h3 class="unidad-titulo">Unidad 3: Seguridad y Gestión</h3>
     <div class="semanas-grid">
-        <div class="card-semana pendiente" id="sem9">
+        <div class="card-semana pendiente" id="sem9" onclick="abrirSemana(9)">
             <span class="nro-sem">9</span>
             <h4>Semana 9</h4>
         </div>
-        <div class="card-semana pendiente" id="sem10">
+        <div class="card-semana pendiente" id="sem10" onclick="abrirSemana(10)">
             <span class="nro-sem">10</span>
             <h4>Semana 10</h4>
         </div>
-        <div class="card-semana pendiente" id="sem11">
+        <div class="card-semana pendiente" id="sem11" onclick="abrirSemana(11)">
             <span class="nro-sem">11</span>
             <h4>Semana 11</h4>
         </div>
-        <div class="card-semana pendiente" id="sem12">
+        <div class="card-semana pendiente" id="sem12" onclick="abrirSemana(12)">
             <span class="nro-sem">12</span>
             <h4>Semana 12</h4>
         </div>
@@ -148,19 +148,19 @@
 <div class="unidad-caja">
     <h3 class="unidad-titulo">Unidad 4: Implementación Final</h3>
     <div class="semanas-grid">
-        <div class="card-semana pendiente" id="sem13">
+        <div class="card-semana pendiente" id="sem13" onclick="abrirSemana(13)">
             <span class="nro-sem">13</span>
             <h4>Semana 13</h4>
         </div>
-        <div class="card-semana pendiente" id="sem14">
+        <div class="card-semana pendiente" id="sem14" onclick="abrirSemana(14)">
             <span class="nro-sem">14</span>
             <h4>Semana 14</h4>
         </div>
-        <div class="card-semana pendiente" id="sem15">
+        <div class="card-semana pendiente" id="sem15" onclick="abrirSemana(15)">
             <span class="nro-sem">15</span>
             <h4>Semana 15</h4>
         </div>
-        <div class="card-semana pendiente" id="sem16">
+        <div class="card-semana pendiente" id="sem16" onclick="abrirSemana(16)">
             <span class="nro-sem">16</span>
             <h4>Semana 16</h4>       
         </div>
@@ -288,6 +288,10 @@ document.getElementById("unidad").addEventListener("change", function(){
     }
 });
 </script>
-
+    <script>
+function abrirSemana(num){
+    window.location.href = "semana.html?sem=" + num;
+}
+</script>
 </body>
 </html>
