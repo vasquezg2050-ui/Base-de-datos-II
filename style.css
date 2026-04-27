@@ -265,3 +265,7 @@ section {
     font-size: 0.85rem;
     font-weight: 600;
 }
+.ver-tareas:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+}
