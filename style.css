@@ -228,33 +228,51 @@ section {
     border-top: 5px solid #ccc; 
 }
 
-/* CONTACTO */
-.contacto { background: #f4f7f6; }
-
-.form-contacto { 
-    width: 100%; 
-    max-width: 500px; 
-    display: flex; 
-    flex-direction: column; 
-    margin-top: 20px; 
+/* ===== CONTACTO ===== */
+.contacto {
+    background: #f4f7f6;
+    text-align: center;
 }
 
-.form-contacto input, 
+.form-contacto {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.form-contacto input,
 .form-contacto textarea {
-    padding: 15px; 
-    margin-bottom: 15px; 
-    border: 1px solid #ddd; 
-    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-contacto input:focus,
+.form-contacto textarea:focus {
+    border-color: #e94560;
+    box-shadow: 0 0 8px rgba(233, 69, 96, 0.3);
 }
 
 .form-contacto button {
-    padding: 15px; 
-    background: #e94560; 
-    color: white; 
-    border: none; 
-    border-radius: 8px; 
-    cursor: pointer; 
+    padding: 15px;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+.form-contacto button:hover {
+    background: #16213e;
+    transform: scale(1.05);
+}
 }
 .ver-tareas {
     margin-top: 10px;
