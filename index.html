@@ -197,6 +197,7 @@ window.onload = function(){
         btnLogin.style.display = "none";
         btnLogout.style.display = "inline-block";
     }
+    cargarTrabajos();
 }
 
 // AGREGAR
@@ -240,7 +241,33 @@ async function agregar(){
     location.reload();
   }
 }
+async function cargarTrabajos(){
+    const { data, error } = await supabaseClient
+        .from("trabajos")
+        .select("*");
 
+    if(error){
+        console.log(error);
+        return;
+    }
+
+    data.forEach((tr) => {
+        let cont = document.getElementById("sem"+tr.semana);
+        if(!cont) return;
+
+        // Quita el gris
+        cont.classList.remove("pendiente");
+
+        // Agrega mensaje solo una vez
+        if(!cont.querySelector(".ver-tareas")){
+            let msg = document.createElement("p");
+            msg.className = "ver-tareas";
+            msg.innerText = "👉 Presione aquí para ver tareas";
+
+            cont.appendChild(msg);
+        }
+    });
+}
 function logout(){
     localStorage.removeItem("rol");
     location.reload();
