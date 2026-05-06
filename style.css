@@ -375,3 +375,13 @@ h2 {
     transform: scale(1.08);
     box-shadow: 0 10px 20px rgba(37,99,235,0.5);
 }
+.card-header {
+    margin-bottom: 10px;
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
