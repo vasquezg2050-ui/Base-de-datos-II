@@ -301,12 +301,16 @@ h2 {
 
 /* CONTENEDOR TARJETA */
 .trabajo-card {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
+
     border-radius: 15px;
     padding: 20px;
-    max-width: 600px;
-    margin: 30px auto;
+
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     transition: 0.3s;
 }
@@ -384,4 +388,9 @@ h2 {
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
+}
+#lista {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
