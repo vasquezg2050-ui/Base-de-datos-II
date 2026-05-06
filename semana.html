@@ -32,14 +32,20 @@ h1{
     box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
 
-a{
-    color: #38bdf8;
+a {
+    display: inline-block;
+    margin-top: 8px;
+    background: #38bdf8;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
     text-decoration: none;
-    font-weight: bold;
+    transition: 0.3s;
 }
 
-a:hover{
-    text-decoration: underline;
+a:hover {
+    background: #0ea5e9;
+    transform: scale(1.05);
 }
 
 .btn-eliminar{
@@ -119,7 +125,7 @@ async function cargar(){
 
     data.forEach(tr => {
         let div = document.createElement("div");
-        div.className = "card";
+        div.className = "trabajo-card";
 
         div.innerHTML = `
         <div class= "card-header">
