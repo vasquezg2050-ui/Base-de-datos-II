@@ -122,11 +122,17 @@ async function cargar(){
         div.className = "card";
 
         div.innerHTML = `
-        <p>${tr.titulo}</p>
+        <div class= "card-header">
+        <h3>${tr.titulo}</h3>
+        </div>
+        
+        <div class= "card-body">
         <a href="${tr.link}" target="_blank">📄 Ver PDF</a>
+        
         ${localStorage.getItem("rol") === "admin" 
             ? `<br><button class="btn-eliminar" onclick="eliminar(${tr.id})">Eliminar</button>` 
             : ""}
+        </div>
         `;
 
         document.getElementById("lista").appendChild(div);
