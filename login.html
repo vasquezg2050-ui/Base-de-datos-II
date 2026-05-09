@@ -170,7 +170,7 @@ function mostrarMensaje(texto, tipo){
 
 // mostrar contraseña
 function togglePass(){
-    let pass = document.getElementById("pass");
+    let pass = document.getElementById("password");
     pass.type = pass.type === "password" ? "text" : "password";
 }
 
@@ -198,7 +198,7 @@ function registrar(){
 // login
 function login(){
     let u = document.getElementById("user").value;
-    let p = document.getElementById("pass").value;
+    let p = document.getElementById("password").value;
 
     let savedUser = localStorage.getItem("user");
     let savedPass = localStorage.getItem("pass");
