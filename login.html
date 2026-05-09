@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login - UPLA</title>
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -128,8 +130,7 @@ button:hover{
     <span class="toggle-password"
           onclick="mostrarPassword()"
           id="icono">
-
-          👁️‍🗨️
+          <i class="bi bi-eye-slash"></i>
     </span>
 </div>
         <button type="submit">Ingresar</button>
@@ -231,10 +232,10 @@ function mostrarPassword(){
 
         input.type = "text";
 
-        icono.innerHTML = "👁️";
+        icono.innerHTML = '<i class="bi bi-eye"></i>';
     }else{
         input.type = "password";
-        icono.innerHTML = "👁️‍🗨️";
+        icono.innerHTML = '<i class="bi bi-eye-slash"></i>';
     }
 }
 </script>
