@@ -410,3 +410,44 @@ h2 {
     flex-direction: column;
     aling-items: center;
 }
+@media(max-width:768px){
+
+    body{
+        padding: 10px;
+    }
+
+    .container{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .titulo-box{
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    #titulo{
+        font-size: 28px;
+    }
+
+    .trabajo-card{
+        padding: 18px;
+    }
+
+    .card-body{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-ver,
+    .btn-eliminar{
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn-volver{
+        width: 100%;
+        max-width: 250px;
+    }
+}
