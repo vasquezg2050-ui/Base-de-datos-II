@@ -206,7 +206,12 @@ async function cargar(){
     }
 
     if(data.length === 0){
-        document.getElementById("lista").innerHTML = "<p>No hay trabajos aún</p>";
+        document.getElementById("lista").innerHTML = `
+       <div class="trabajo-card" style="text-align:center;">
+       <h3>📂 No hay trabajos aún</h3>
+    <p>Pronto se subirán nuevos archivos.</p>
+</div>
+`;
         return;
     }
 
