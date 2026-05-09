@@ -273,6 +273,87 @@ section {
     background: #16213e;
     transform: scale(1.05);
 }
+.contact-box{
+    width: 100%;
+    max-width: 600px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+
+    padding: 35px;
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    margin-top: 25px;
+
+    animation: aparecer 0.8s ease;
+}
+
+.contact-box form{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-box input,
+.contact-box textarea{
+    width: 100%;
+
+    padding: 15px;
+
+    border-radius: 12px;
+    border: none;
+
+    background: rgba(255,255,255,0.12);
+
+    color: white;
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.contact-box input::placeholder,
+.contact-box textarea::placeholder{
+    color: rgba(255,255,255,0.7);
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus{
+    transform: scale(1.02);
+
+    border: 1px solid #e94560;
+
+    box-shadow: 0 0 15px rgba(233,69,96,0.5);
+}
+
+.contact-box button{
+    padding: 15px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(45deg,#e94560,#ff4d6d);
+
+    color: white;
+
+    font-weight: bold;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.contact-box button:hover{
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 25px rgba(233,69,96,0.4);
+}
 .ver-tareas {
     margin-top: 10px;
     background: #e94560;
