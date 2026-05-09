@@ -74,6 +74,39 @@ button:hover{
     margin-top:10px;
     font-size:14px;
 }
+   .password-box{
+    position: relative;
+    width: 100%;
+}
+
+.password-box input{
+    width: 100%;
+    padding: 14px;
+    padding-right: 50px;
+
+    border-radius: 10px;
+    border: none;
+
+    background: #0f172a;
+    color: white;
+    font-size: 16px;
+
+    box-sizing: border-box;
+}
+
+.toggle-password{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+.toggle-password:hover{
+    opacity: 1;
+} 
 </style>
 </head>
 
@@ -86,10 +119,17 @@ button:hover{
     <!-- LOGIN -->
     <form onsubmit="return login()">
         <input type="text" id="user" placeholder="Usuario">
-      <div class="password-box">
-    <input type="password" id="password" placeholder="Contraseña">
-    <span class="toggle-password" onclick="mostrarPassword()">
-        👁️
+       <div class="password-box">
+
+      <input type="password"
+           id="password"
+           placeholder="Contraseña">
+
+    <span class="toggle-password"
+          onclick="mostrarPassword()"
+          id="icono">
+
+          👁️‍🗨️
     </span>
 </div>
         <button type="submit">Ingresar</button>
@@ -183,12 +223,18 @@ function login(){
 </script>
 <script>
 function mostrarPassword(){
+
     let input = document.getElementById("password");
+    let icono = document.getElementById("icono");
 
     if(input.type === "password"){
+
         input.type = "text";
-    } else {
+
+        icono.innerHTML = "👁️";
+    }else{
         input.type = "password";
+        icono.innerHTML = "👁️‍🗨️";
     }
 }
 </script>
