@@ -168,12 +168,65 @@ animation: aparecer 0.6s ease;
         background-position: 0% 50%;
     }
 }
+    .modal{
+    display: none;
+    position: fixed;
+    z-index: 999;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+/* CONTENIDO */
+.modal-content{
+    position: relative;
+    width: 90%;
+    height: 90%;
+    margin: 30px auto;
+    background: #0f172a;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+/* PDF */
+#pdfViewer{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* BOTON CERRAR */
+.cerrar{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
+}
 </style>
 </head>
 <body>
 
 <div class="container">
  <button class="btn-volver" onclick="volver()">⬅ Volver</button>
+    <!-- MODAL PDF -->
+<div id="pdfModal" class="modal">
+    <div class="modal-content">
+        <span class="cerrar" onclick="cerrarModal()">
+            ✖️
+        </span>
+        <iframe id="pdfViewer"></iframe>
+    </div>
+</div>
 <div class="titulo-box">
    <h1 id="titulo">Semana</h1>
 </div>    
@@ -227,7 +280,10 @@ async function cargar(){
         </div>
         
         <div class= "card-body">
-        <a href="${tr.link}" target="_blank" class="btn-ver">📄 Ver PDF</a>
+        <button class="btn-ver"
+        onclick="abrirPDF('${tr.link}')">
+        📄 Ver PDF
+        </button>
         
         ${localStorage.getItem("rol") === "admin" 
             ? `<br><button class="btn-eliminar" onclick="eliminar(${tr.id})">Eliminar</button>` 
@@ -260,6 +316,21 @@ function volver(){
 
 cargar();
 </script>
+    <script>
 
+function abrirPDF(link){
+
+    document.getElementById("pdfModal").style.display = "block";
+
+    document.getElementById("pdfViewer").src = link;
+}
+
+function cerrarModal(){
+
+    document.getElementById("pdfModal").style.display = "none";
+
+    document.getElementById("pdfViewer").src = "";
+}
+</script>
 </body>
 </html>
