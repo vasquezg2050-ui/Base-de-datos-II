@@ -538,3 +538,74 @@ h2 {
 
     box-shadow: 0 5px 15px rgba(233,69,96,0.4);
 }
+.contacto-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+/* LADO IZQUIERDO */
+.info-contacto{
+    flex: 1;
+    color: white;
+}
+
+.info-contacto h3{
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.titulo-redes{
+    margin-top: 40px;
+}
+
+/* ICONOS REDES */
+.iconos-redes{
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.iconos-redes a{
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    background: #e94560;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 20px;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.iconos-redes a:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(233,69,96,0.5);
+}
+
+/* FORMULARIO */
+.contact-box{
+    flex: 1;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+    .contacto-container{
+        flex-direction: column;
+    }
+
+}
