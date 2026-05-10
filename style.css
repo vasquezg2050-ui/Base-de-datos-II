@@ -621,5 +621,46 @@ h2 {
     }
 }
 #adminPanel{
-    scroll-margin-top: 180px;
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 100px;
+    padding-top: 120px;
+}
+
+.admin-box{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    color:white;
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+#adminPanel h2{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:25px;
+    text-shadow:0 0 15px rgba(255,255,255,0.4);
+}
+
+#adminPanel input,
+#adminPanel select,
+#adminPanel button{
+    width:100%;
+    padding:12px;
+    margin-bottom:12px;
+    border-radius:10px;
+    border:none;
+    font-size:16px;
+}
+
+#adminPanel button{
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+#adminPanel button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
 }
