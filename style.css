@@ -619,5 +619,7 @@ h2 {
     .contacto-container{
         flex-direction: column;
     }
-
+}
+#adminPanel{
+    scroll-margin-top: 120px;
 }
