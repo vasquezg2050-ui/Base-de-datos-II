@@ -564,6 +564,18 @@ h2 {
 .titulo-redes{
     margin-top: 40px;
 }
+.redes a{
+    transition: 0.3s;
+}
+
+.redes a:hover{
+    transform: scale(1.1);
+    background: #ff4d6d;
+}
+
+.contact-container{
+    align-items: center;
+}
 
 /* ICONOS REDES */
 .iconos-redes{
