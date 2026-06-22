@@ -169,12 +169,6 @@ function mostrarMensaje(texto, tipo){
     }
 }
 
-// mostrar contraseña
-function togglePass(){
-    let pass = document.getElementById("password");
-    pass.type = pass.type === "password" ? "text" : "password";
-}
-
 // mostrar registro
 function mostrarRegistro(){
     document.getElementById("registroBox").style.display = "block";
@@ -182,7 +176,7 @@ function mostrarRegistro(){
 
 // registrar usuario
 function registrar(){
-    let user = document.getElementById("newUser").value;
+    let user = document.getElementById("newUser").value.trim();
     let pass = document.getElementById("newPass").value;
 
     if(user === "" || pass === ""){
@@ -190,6 +184,9 @@ function registrar(){
         return;
     }
 
+    // ⚠️ Nota: localStorage NUNCA debe usarse como sistema real de autenticación.
+    // Esto sigue siendo solo para fines académicos/demo. Lo ideal a futuro
+    // es usar supabaseClient.auth.signUp() ya que el proyecto ya usa Supabase.
     localStorage.setItem("user", user);
     localStorage.setItem("pass", pass);
 
@@ -198,7 +195,7 @@ function registrar(){
 
 // login
 function login(){
-    let u = document.getElementById("user").value;
+    let u = document.getElementById("user").value.trim();
     let p = document.getElementById("password").value;
 
     let savedUser = localStorage.getItem("user");
@@ -210,7 +207,7 @@ function login(){
         window.location.href = "index.html";
     }
     // usuario registrado
-    else if(u === savedUser && p === savedPass){
+    else if(u !== "" && u === savedUser && p === savedPass){
         localStorage.setItem("rol","usuario");
         window.location.href = "index.html";
     }
