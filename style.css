@@ -1,8 +1,18 @@
+/* 🎨 Variables centralizadas (no cambian ningún color actual, solo lo organizan) */
+:root{
+    --color-principal: #e94560;   /* usado 16 veces en el archivo */
+    --color-fondo-oscuro: #1a1a2e; /* usado 4 veces */
+    --color-azul: #2563eb;         /* usado 3 veces */
+    --color-acento: #ff4d6d;
+    --color-celeste: #38bdf8;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+
 }
 
 html {
