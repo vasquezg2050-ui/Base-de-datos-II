@@ -231,10 +231,11 @@ const supabaseClient = supabase.createClient(
 );
 
 window.onload = function(){
-    let rol = localStorage.getItem("rol");
 
-    let btnLogin = document.getElementById("btnLogin");
-    let btnLogout = document.getElementById("btnLogout");
+    const rol = localStorage.getItem("rol");
+
+    const btnLogin = document.getElementById("btnLogin");
+    const btnLogout = document.getElementById("btnLogout");
 
     if(rol === "admin"){
         document.getElementById("adminPanel").style.display = "block";
