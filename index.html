@@ -288,7 +288,13 @@ async function agregar(){
     alert("Error al guardar");
     console.log(error);
   } else {
-    location.reload();
+    // Antes: location.reload(); (recargaba toda la página)
+    // Ahora: solo limpiamos el formulario y refrescamos las tarjetas
+    document.getElementById("Titulo").value = "";
+    document.getElementById("archivo").value = "";
+    document.getElementById("unidad").value = "";
+    document.getElementById("semana").innerHTML = '<option value="">Seleccionar Semana</option>';
+    await cargarTrabajos();
   }
 }
 async function cargarTrabajos(){
