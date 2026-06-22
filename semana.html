@@ -281,9 +281,11 @@ async function cargar(){
         let div = document.createElement("div");
         div.className = "trabajo-card";
 
+        // Antes: ${tr.titulo} se insertaba directo dentro de innerHTML (riesgo XSS)
+        // Ahora: dejamos el título vacío en el HTML fijo y lo insertamos como texto plano
         div.innerHTML = `
         <div class= "card-header">
-        <h3>${tr.titulo}</h3>
+        <h3 id="titulo-${tr.id}"></h3>
         </div>
         
         <div class= "card-body">
@@ -299,6 +301,9 @@ async function cargar(){
         `;
 
         document.getElementById("lista").appendChild(div);
+
+        // textContent escapa automáticamente cualquier HTML/JS malicioso en el título
+        document.getElementById(`titulo-${tr.id}`).textContent = tr.titulo;
     });
 }
 
