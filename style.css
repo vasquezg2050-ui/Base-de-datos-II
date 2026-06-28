@@ -157,8 +157,7 @@ section {
     text-align: center;
     transition: 0.3s ease;
     cursor: pointer;
-
-    border: 2px solid #e5e7eb;
+    
     border-top: 5px solid #e94560;
 
     box-shadow: 0 10px 25px rgba(0,0,0,0.12);
@@ -581,10 +580,6 @@ h2 {
 .redes a:hover{
     transform: scale(1.1);
     background: #ff4d6d;
-}
-
-.contact-container{
-    align-items: center;
 }
 
 /* ICONOS REDES */
